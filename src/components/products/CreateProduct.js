@@ -6,11 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 
 const CreateProduct = (props) => {
-    const navigate = useNavigate()
-    const [product, setProduct] = useState({
-        name:'', price:'', description:'', category:'', stock:'',
-    })
+    const [product, setProduct] = useState({ name:'', price:'', description:'', category:'', stock:''})
     const {user} = props
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         e.persist()
@@ -19,7 +17,7 @@ const CreateProduct = (props) => {
             const name = e.target.name
             let value = e.target.value
             
-            const updatedValue = {[name]:value}
+            const updatedValue = { [name]:value }
 
             return {...prevProduct, ...updatedValue}
         })

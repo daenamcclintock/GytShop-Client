@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 
 const ProductForm = (props) => {
@@ -7,14 +7,14 @@ const ProductForm = (props) => {
         <Container className="justify-content-center">
              <h3>{heading}</h3>
 
-             <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <Form.Label>Product Name</Form.Label>
                 <Form.Control
                     placeholder="Product name"
                     value={product.name}
                     name='name'
                     onChange={handleChange}
-            />
+                />
 
             <Form.Label>Description of Product</Form.Label>
                 <Form.Control as='textarea'
@@ -22,14 +22,14 @@ const ProductForm = (props) => {
                     value={product.description}
                     name='description'
                     onChange={handleChange}
-            />
+                />
 
             <Form.Label>Category of Product</Form.Label>
-                    <Form.Control
-                        placeholder="Category"
-                        value={product.category}
-                        name='category'
-                        onChange={handleChange}
+                <Form.Control
+                    placeholder="Category"
+                    value={product.category}
+                    name='category'
+                    onChange={handleChange}
                 />
 
             <Form.Label>Price of Product</Form.Label>
@@ -39,7 +39,7 @@ const ProductForm = (props) => {
                     value={product.price}
                     name='price'
                     onChange={handleChange}
-            />
+                />
 
             <Form.Label>Current Stock</Form.Label>
                 <Form.Control
@@ -48,7 +48,7 @@ const ProductForm = (props) => {
                     value={product.stock}
                     name='stock'
                     onChange={handleChange}
-            />
+                />
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>

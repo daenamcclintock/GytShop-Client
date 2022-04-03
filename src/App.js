@@ -13,11 +13,8 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import IndexProducts from './components/products/IndexProduct'
-<<<<<<< HEAD
 import CreateProduct from './components/products/CreateProduct'
-=======
 import ShowProduct from './components/products/ShowProduct'
->>>>>>> upstream/main
 
 const App = () => {
 
@@ -79,11 +76,15 @@ const App = () => {
 						element={<IndexProducts msgAlert={msgAlert} setUser={setUser} />}
 					/>
 					<Route
+						path='/products/:productId'
+						element={<ShowProduct msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
 						path='/addProduct'
 						element={
-							// <RequireAuth user={user}>
-							<CreateProduct msgAlert={msgAlert} user={user} />}
-						// </RequireAuth>}
+						<RequireAuth user={user}>
+							<CreateProduct msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
 					/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
