@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { getAllProducts } from '../../api/products'
 
@@ -47,6 +47,17 @@ const IndexProducts = (props) => {
     return (
         <>
             <h3>Browse Some Products</h3>
+            <Dropdown>
+				<Dropdown.Toggle variant="primary" id="dropdown-basic">
+					Categories
+				</Dropdown.Toggle>
+
+				<Dropdown.Menu>
+					<Dropdown.Item href="/products/electronics">electronics</Dropdown.Item>
+					<Dropdown.Item href="/products/collectibles">collectibles</Dropdown.Item>
+					<Dropdown.Item href="/products/clothing">clothing</Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>
             <div style={cardContainerLayout}>
                 {productCards}
             </div>

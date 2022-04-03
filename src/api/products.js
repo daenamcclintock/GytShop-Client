@@ -6,6 +6,21 @@ export const getAllProducts = () => {
     return axios(`${apiUrl}/products`)
 }
 
+// GET -> Electronics category
+export const getAllElectronics = () => {
+    return axios(`${apiUrl}/products/electronics`)
+}
+
+// GET -> Collectibles category
+export const getAllCollectibles = () => {
+    return axios(`${apiUrl}/products/collectibles`)
+}
+
+// GET -> Clothing category
+export const getAllClothing = () => {
+    return axios(`${apiUrl}/products/clothing`)
+}
+
 // GET -> Show function
 export const getOneProduct = (productId) => {
     return axios(`${apiUrl}/products/${productId}`)
