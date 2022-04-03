@@ -13,11 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import IndexProducts from './components/products/IndexProduct'
-<<<<<<< HEAD
 import CreateProduct from './components/products/CreateProduct'
-=======
-import ShowProduct from './components/products/ShowProduct'
->>>>>>> upstream/main
 
 const App = () => {
 
@@ -28,7 +24,7 @@ const App = () => {
   console.log('message alerts', msgAlerts)
   const clearUser = () => {
     console.log('clear user ran')
-    setUser(null)
+    setUser(null)	
   }
 
 	const deleteAlert = (id) => {

@@ -62,6 +62,7 @@ const alwaysOptions = (
 		<Nav.Item className='m-2'>
 			<Link to='addProduct' style={linkStyle}>
 				Add Product
+			</Link>
 			<Link to='/' style={linkStyle}>
 				Categories
 			</Link>
