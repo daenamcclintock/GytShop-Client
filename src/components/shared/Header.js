@@ -8,12 +8,27 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='/products' style={linkStyle}>
+				My Listings
+			</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='/' style={linkStyle}>
+				Add Product
+			</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='change-password' style={linkStyle}>
+				My Cart
+			</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -47,6 +62,8 @@ const alwaysOptions = (
 		<Nav.Item className='m-2'>
 			<Link to='addProduct' style={linkStyle}>
 				Add Product
+			<Link to='/' style={linkStyle}>
+				Categories
 			</Link>
 		</Nav.Item>
 	</>
@@ -54,7 +71,7 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand>
+		<Navbar.Brand className='m-2'>
             <Link to='/' style={linkStyle}>
                 GytShop
             </Link>
