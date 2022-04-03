@@ -77,9 +77,9 @@ const App = () => {
 					<Route
 						path='/addProduct'
 						element={
-						<RequireAuth user={user}>
-							<CreateProduct msgAlert={msgAlert} user={user} />
-						</RequireAuth>}
+							// <RequireAuth user={user}>
+							<CreateProduct msgAlert={msgAlert} user={user} />}
+						// </RequireAuth>}
 					/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (

@@ -34,7 +34,8 @@ const ProductForm = (props) => {
 
             <Form.Label>Price of Product</Form.Label>
                 <Form.Control
-                    placeholder="Product name"
+                    type='number'
+                    placeholder="Price of Product"
                     value={product.price}
                     name='price'
                     onChange={handleChange}
@@ -42,11 +43,13 @@ const ProductForm = (props) => {
 
             <Form.Label>Current Stock</Form.Label>
                 <Form.Control
-                    placeholder="Product name"
+                    type='number'   
+                    placeholder="Number in Stock"
                     value={product.stock}
                     name='stock'
                     onChange={handleChange}
             />
+                <Button type='submit'>Submit</Button>
             </Form>
         </Container>
            
