@@ -17,7 +17,7 @@ export const createProduct = (newProduct) => {
         url: `${apiUrl}/products`,
         method: 'POST',
         headers: {
-            Authorization: `Token token=${user.token}`
+            // Authorization: `Token token=${user.token}`
         },
         data: { product: newProduct }
     })
@@ -29,7 +29,7 @@ export const updateProduct = (updatedProduct) => {
         url: `${apiUrl}/products/${updatedProduct.id}`,
         method: 'PATCH',
         headers: {
-            Authorization: `Token token=${user.token}`
+            // Authorization: `Token token=${user.token}`
         },
         data: { product: updatedProduct }
     })
@@ -41,7 +41,7 @@ export const removeProduct = (productId) => {
         url: `${apiUrl}/products/${productId}`,
         method: 'DELETE',
         headers: {
-            Authorization: `Token token=${user.token}`
+            // Authorization: `Token token=${user.token}`
         },
         data: { product: '' }
     }))
