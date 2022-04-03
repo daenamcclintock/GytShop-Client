@@ -24,7 +24,7 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
-			<Link to='change-password' style={linkStyle}>
+			<Link to='/orders' style={linkStyle}>
 				My Cart
 			</Link>
 		</Nav.Item>
