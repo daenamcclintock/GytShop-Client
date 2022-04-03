@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { getAllProducts } from '../../api/products'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -17,9 +17,7 @@ const IndexProducts = (props) => {
             .then(res => {
                 setProducts(res.data.products)
             })
-            .catch(() => {
-                console.error
-            })
+            .catch(console.error)
     }, [])
 
     if (!products) {
@@ -31,13 +29,13 @@ const IndexProducts = (props) => {
 
     let productCards
 
-    if (productCards.length > 0) {
+    if(products.length > 0) {
         productCards = products.map(product => (
             <Card key={product.id} style={{ width: '30%' }} className="m-2">
-                <Card.Header>{product.fullTitle}</Card.Header>
+                <Card.Header>{product.name}</Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        <Link to={`/pets/${product.id}`}>View {product.name}</Link>
+                        <Link to={`/products/${product.id}`}>View {product.name}</Link>
                     </Card.Text>
                 </Card.Body>
             </Card>
