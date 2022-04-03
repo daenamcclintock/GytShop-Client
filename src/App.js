@@ -25,7 +25,7 @@ const App = () => {
   console.log('message alerts', msgAlerts)
   const clearUser = () => {
     console.log('clear user ran')
-    setUser(null)
+    setUser(null)	
   }
 
 	const deleteAlert = (id) => {
