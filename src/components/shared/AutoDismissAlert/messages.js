@@ -6,6 +6,10 @@ const messages = {
 	signOutSuccess: 'Come back soon!',
 	changePasswordSuccess: 'Password changed successfully!',
 	changePasswordFailure:'Failed to change passwords. Check your old password and try again.',
+	createProductSuccess: "Product uploaded successfully!",
+	createProductFailure: "Something went wrong. Please try again.",
+	addToCartSuccess: "Item added to cart!",
+	addToCartFailure: "Failed to add item to cart. Item is OUT OF STOCK."
 }
 
 module.exports = messages
