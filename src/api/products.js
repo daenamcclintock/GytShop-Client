@@ -27,36 +27,36 @@ export const getOneProduct = (productId) => {
 }
 
 // POST -> Create function
-export const createProduct = (newProduct) => {
+export const createProduct = (user, newProduct) => {
     return axios({
         url: `${apiUrl}/products`,
         method: 'POST',
         headers: {
-            // Authorization: `Token token=${user.token}`
+            Authorization: `Token token=${user.token}`
         },
         data: { product: newProduct }
     })
 }
 
 // PATCH -> Update function
-export const updateProduct = (updatedProduct) => {
+export const updateProduct = (user, updatedProduct) => {
     return axios({
         url: `${apiUrl}/products/${updatedProduct.id}`,
         method: 'PATCH',
         headers: {
-            // Authorization: `Token token=${user.token}`
+            Authorization: `Token token=${user.token}`
         },
         data: { product: updatedProduct }
     })
 }
 
 // DELETE -> Remove function
-export const removeProduct = (productId) => {
+export const removeProduct = (user, productId) => {
     return(axios({
         url: `${apiUrl}/products/${productId}`,
         method: 'DELETE',
         headers: {
-            // Authorization: `Token token=${user.token}`
+            Authorization: `Token token=${user.token}`
         },
         data: { product: '' }
     }))

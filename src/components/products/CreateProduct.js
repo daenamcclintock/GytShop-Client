@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const CreateProduct = (props) => {
     const [product, setProduct] = useState({ name:'', price:'', description:'', category:'', stock:''})
-    const {user} = props
+    const {user, msgAlert} = props
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -26,11 +26,23 @@ const CreateProduct = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        createProduct(user,product)
-            .then(res => {
-                navigate(`/products/${res.data.product.id}`)
-            })
-            .catch(console.error)
+        createProduct(user, product)
+            .then(res => {navigate(`/products/${res.data.product._id}`)})
+            // .then(res => console.log('product id: ', res.data.product.))
+            // Then we send success message
+            .then( () =>
+                msgAlert({
+                    heading: 'Product Added! Success!',
+                    message: 'Product added',
+                    variant: 'success',
+            }))
+            // if there is an error, we'll send an error message
+            .catch( () =>
+                msgAlert({
+                    heading: 'Oh No!',
+                    message: 'Product could not be added',
+                    variant: 'danger',
+            }))
     }
 
     return (
@@ -43,9 +55,6 @@ const CreateProduct = (props) => {
             />
         </div>
     )
-
-
-
 }
 
 export default CreateProduct
