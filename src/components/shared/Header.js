@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+import {Navbar, DropdownButton, Dropdown} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 const linkStyle = {
     color: 'white',
+    textDecoration: 'none'
+}
+const categoryLinkStyle = {
+    color: 'black',
     textDecoration: 'none'
 }
 const authenticatedOptions = (
@@ -59,10 +63,12 @@ const alwaysOptions = (
 				All Listings
 			</Link>
 		</Nav.Item>
-		<Nav.Item className='m-2'>
-			<Link to='/' style={linkStyle}>
-				Categories
-			</Link>
+		<Nav.Item >
+			<DropdownButton id="dropdown-basic-button" title="Categories" >
+				<Dropdown.Item><Link to='/products/clothing' style={categoryLinkStyle}>Clothing</Link></Dropdown.Item>
+				<Dropdown.Item><Link to='/products/electronics' style={categoryLinkStyle}>Electronics</Link></Dropdown.Item>
+				<Dropdown.Item><Link to='/products/collectibles' style={categoryLinkStyle}>Collectibles</Link></Dropdown.Item>
+			</DropdownButton>
 		</Nav.Item>
 	</>
 )
