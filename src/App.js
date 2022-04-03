@@ -15,6 +15,9 @@ import ChangePassword from './components/auth/ChangePassword'
 import IndexProducts from './components/products/IndexProduct'
 import CreateProduct from './components/products/CreateProduct'
 import ShowProduct from './components/products/ShowProduct'
+import ClothingProducts from './components/categories/ClothingProducts'
+import CollectiblesProducts from './components/categories/CollectiblesProducts'
+import ElectronicsProducts from './components/categories/ElectronicsProducts'
 
 const App = () => {
 
@@ -74,6 +77,18 @@ const App = () => {
 					<Route
 						path='/products'
 						element={<IndexProducts msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/products/clothing'
+						element={<ClothingProducts msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/products/collectibles'
+						element={<CollectiblesProducts msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/products/electronics'
+						element={<ElectronicsProducts msgAlert={msgAlert} setUser={setUser} />}
 					/>
 					<Route
 						path='/products/:productId'
