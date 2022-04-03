@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Dropdown } from 'react-bootstrap'
+import { Card, Dropdown, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { getAllProducts } from '../../api/products'
 
@@ -36,6 +36,10 @@ const IndexProducts = (props) => {
                 <Card.Title className='m-2'>{product.name}</Card.Title>
                 <Card.Body>
                     <Card.Text>Seller: {product.owner.username}</Card.Text>
+                        <Card.Img
+                        src={product.image}
+                        alt='product image'
+                        />
                     <Card.Text>
                         <Link to={`/products/${product._id}`}>View</Link>
                     </Card.Text>
