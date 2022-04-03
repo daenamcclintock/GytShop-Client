@@ -12,6 +12,7 @@ const cardContainerLayout = {
 const IndexProducts = (props) => {
     const [products, setProducts] = useState(null)
     
+
     useEffect(() => {
         getAllProducts()
             .then(res => {
@@ -57,9 +58,9 @@ const IndexProducts = (props) => {
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
-					<Dropdown.Item href="/products/electronics">electronics</Dropdown.Item>
-					<Dropdown.Item href="/products/collectibles">collectibles</Dropdown.Item>
-					<Dropdown.Item href="/products/clothing">clothing</Dropdown.Item>
+					<Link to = {`/products/electronics`} style={{textDecoration:'none' , color:'black'}}>Clothing</Link><br/>
+					<Link to = {`/products/collectibles`} style={{textDecoration:'none', color:'black' }}>Collectibles</Link><br/>
+					<Link to = {`/products/electronics`} style={{textDecoration:'none', color:'black'}}> Electronics </Link>
 				</Dropdown.Menu>
 			</Dropdown>
             <div style={cardContainerLayout}>

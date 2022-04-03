@@ -11,6 +11,7 @@ const cardContainerLayout = {
 
 const ClothingProducts = (props) => {
     const [products, setProducts] = useState(null)
+
     
     useEffect(() => {
         getAllClothing()
