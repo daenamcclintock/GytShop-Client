@@ -40,6 +40,8 @@ const IndexProducts = (props) => {
                         <Card.Img
                         src={product.image}
                         alt='product image'
+                        width='200px'
+                        height='400px'
                         />
                     <Card.Text>
                         <Link to={`/products/${product._id}`}>View</Link>
