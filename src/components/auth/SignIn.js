@@ -8,30 +8,18 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignIn = (props) => {
-	// constructor(props) {
-	// 	super(props)
 
-	// 	this.state = {
-	// 		email: '',
-	// 		password: '',
-	// 	}
-	// }
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
-
-	// handleChange = (event) =>
-	// 	this.setState({
-	// 		[event.target.name]: event.target.value,
-	// 	})
 
 	const onSignIn = (event) => {
 		event.preventDefault()
         console.log('the props', props)
 		const { msgAlert, setUser } = props
 
-        const credentials = {email, password}
+        const credentials = {username, password}
 
 		signIn(credentials)
 			.then((res) => setUser(res.data.user))
@@ -44,7 +32,7 @@ const SignIn = (props) => {
 			)
 			.then(() => navigate('/'))
 			.catch((error) => {
-                setEmail('')
+                setUsername('')
                 setPassword('')
 				msgAlert({
 					heading: 'Sign In Failed with error: ' + error.message,
@@ -60,14 +48,14 @@ const SignIn = (props) => {
                 <h3>Sign In</h3>
                 <Form onSubmit={onSignIn}>
                     <Form.Group controlId='email'>
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Username</Form.Label>
                         <Form.Control
                             required
-                            type='email'
-                            name='email'
-                            value={email}
-                            placeholder='Enter email'
-                            onChange={e => setEmail(e.target.value)}
+                            type='text'
+                            name='username'
+                            value={username}
+                            placeholder='Enter username'
+                            onChange={e => setUsername(e.target.value)}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
