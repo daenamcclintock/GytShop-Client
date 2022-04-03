@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import IndexProducts from './components/products/IndexProduct'
+import ShowProduct from './components/products/ShowProduct'
 
 const App = () => {
 
@@ -72,6 +73,10 @@ const App = () => {
 					<Route
 						path='/products'
 						element={<IndexProducts msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/products/:productId'
+						element={<ShowProduct msgAlert={msgAlert} setUser={setUser} />}
 					/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
