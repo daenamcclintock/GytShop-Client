@@ -75,7 +75,11 @@ const ShowProduct = (props) => {
     return(
         <>
             <Container>
-                <h3>{product.name}</h3>
+                <h3><b>{product.name}</b></h3>
+                <Card.Img
+                    src={product.image}
+                    alt='product image'
+                />
                 <p>${product.price}</p>
                 <p>In-stock: {product.stock}</p>
                 <p>{product.description}</p>
