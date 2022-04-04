@@ -13,7 +13,6 @@ const MineProducts = (props) => {
     const [myProducts, setMyProducts] = useState(null)
     const {user} = props
     
-
     useEffect(() => {
         getMyProducts(user)
             .then(res => {
