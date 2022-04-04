@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Dropdown, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { getAllProducts } from '../../api/products'
+import { getMyProducts } from '../../api/products'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -10,28 +10,29 @@ const cardContainerLayout = {
 }
 
 const MineProducts = (props) => {
-    const [products, setProducts] = useState(null)
+    const [myProducts, setMyProducts] = useState(null)
+    const {user} = props
     
 
     useEffect(() => {
-        getAllProducts()
+        getMyProducts(user)
             .then(res => {
-                setProducts(res.data.products)
+                setMyProducts(res.data.products)
             })
             .catch(console.error)
     }, [])
 
-    if (!products) {
+    if (!myProducts) {
         return <p>loading...</p>
     }
-    else if (products.length === 0) {
+    else if (myProducts.length === 0) {
         return <p>Add a product.</p>
     }
 
     let productCards
 
-    if(products.length > 0) {
-        productCards = products.map(product => (
+    if(myProducts.length > 0) {
+        productCards = myProducts.map(product => (
             <Card key={product._id} style={{ width: '30%' }} className="m-2">
                 <Card.Img variant="top" src="" />
                 <Card.Title className='m-2'>{product.name}</Card.Title>
@@ -57,16 +58,16 @@ const MineProducts = (props) => {
         <>
             <h3>Browse Some Products</h3>
             <Dropdown>
-				<Dropdown.Toggle variant="primary" id="dropdown-basic">
-					Categories
-				</Dropdown.Toggle>
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    Categories
+                </Dropdown.Toggle>
 
-				<Dropdown.Menu>
-					<Link to = {`/products/clothing`} style={{textDecoration:'none' , color:'black'}}>Clothing</Link><br/>
-					<Link to = {`/products/collectibles`} style={{textDecoration:'none', color:'black' }}>Collectibles</Link><br/>
-					<Link to = {`/products/electronics`} style={{textDecoration:'none', color:'black'}}> Electronics </Link>
-				</Dropdown.Menu>
-			</Dropdown>
+                <Dropdown.Menu>
+                    <Link to = {`/products/clothing`} style={{textDecoration:'none' , color:'black'}}>Clothing</Link><br/>
+                    <Link to = {`/products/collectibles`} style={{textDecoration:'none', color:'black' }}>Collectibles</Link><br/>
+                    <Link to = {`/products/electronics`} style={{textDecoration:'none', color:'black'}}> Electronics </Link>
+                </Dropdown.Menu>
+            </Dropdown>
             <div style={cardContainerLayout}>
                 {productCards}
             </div>
