@@ -17,13 +17,18 @@ export const getAllCollectibles = () => {
 }
 
 // GET -> Clothing category
+export const getAllClothing = () => {
+    return axios(`${apiUrl}/products/clothing`)
+}
+
+// GET -> Clothing category
 export const getAllCartItems = () => {
     return axios(`${apiUrl}/orders`)
 }
 
-// GET -> Clothing category
-export const getAllClothing = () => {
-    return axios(`${apiUrl}/products/clothing`)
+// GET -> Checkout
+export const getAllCheckoutItems = () => {
+    return axios(`${apiUrl}/checkout`)
 }
 
 // GET -> Show function
