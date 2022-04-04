@@ -12,7 +12,6 @@ const cardContainerLayout = {
 const MyCart = (props) => {
     const [products, setProducts] = useState(null)
 
-    
     useEffect(() => {
         getAllCartItems()
             .then(res => {
@@ -24,7 +23,7 @@ const MyCart = (props) => {
     if (!products) {
         return <p>loading...</p>
     }
-    
+
     else if (products.length === 0) {
         return <p>Shopping Cart is Empty. Add an item!</p>
     }
