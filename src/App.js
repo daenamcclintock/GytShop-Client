@@ -18,6 +18,7 @@ import ShowProduct from './components/products/ShowProduct'
 import ClothingProducts from './components/categories/ClothingProducts'
 import CollectiblesProducts from './components/categories/CollectiblesProducts'
 import ElectronicsProducts from './components/categories/ElectronicsProducts'
+import MyCart from './components/cart/MyCart'
 
 const App = () => {
 
@@ -89,6 +90,10 @@ const App = () => {
 					<Route
 						path='/products/electronics'
 						element={<ElectronicsProducts msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/orders'
+						element={<MyCart msgAlert={msgAlert} setUser={setUser} />}
 					/>
 					<Route
 						path='/products/:productId'

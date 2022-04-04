@@ -21,6 +21,11 @@ export const getAllClothing = () => {
     return axios(`${apiUrl}/products/clothing`)
 }
 
+// GET -> Cart Items
+export const getAllCartItems = () => {
+    return axios(`${apiUrl}/orders`)
+}
+
 // GET -> Show function
 export const getOneProduct = (productId) => {
     return axios(`${apiUrl}/products/${productId}`)
