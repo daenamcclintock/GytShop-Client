@@ -60,7 +60,7 @@ const IndexProducts = (props) => {
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
-					<Link to = {`/products/electronics`} style={{textDecoration:'none' , color:'black'}}>Clothing</Link><br/>
+					<Link to = {`/products/clothing`} style={{textDecoration:'none' , color:'black'}}>Clothing</Link><br/>
 					<Link to = {`/products/collectibles`} style={{textDecoration:'none', color:'black' }}>Collectibles</Link><br/>
 					<Link to = {`/products/electronics`} style={{textDecoration:'none', color:'black'}}> Electronics </Link>
 				</Dropdown.Menu>
