@@ -6,6 +6,17 @@ export const getAllProducts = () => {
     return axios(`${apiUrl}/products`)
 }
 
+//GET -> MINE index
+export const getMyProducts = (user) => {
+    return axios({
+        url:`${apiUrl}/products/mine`,
+        method: 'GET',
+        headers: {
+            Authorization:`Token token=${user.token}`
+        }
+    })
+}
+
 // GET -> Electronics category
 export const getAllElectronics = () => {
     return axios(`${apiUrl}/products/electronics`)
@@ -21,14 +32,14 @@ export const getAllClothing = () => {
     return axios(`${apiUrl}/products/clothing`)
 }
 
-// GET -> Clothing category
-export const getAllCartItems = () => {
-    return axios(`${apiUrl}/orders`)
+// GET -> Shopping Cart
+export const getAllCartItems = (userId) => {
+    return axios(`${apiUrl}/orders/${userId}`)
 }
 
 // GET -> Checkout
-export const getAllCheckoutItems = () => {
-    return axios(`${apiUrl}/checkout`)
+export const getAllCheckoutItems = (userId) => {
+    return axios(`${apiUrl}/checkout/${userId}`)
 }
 
 // GET -> Show function

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 const CreateProduct = (props) => {
-    const [product, setProduct] = useState({ name:'', price:'', description:'', category:'', stock:''})
+    const [product, setProduct] = useState({ name:'', price:'', description:'', category:'', stock:'',image:''})
     const {user, msgAlert} = props
     const navigate = useNavigate()
 

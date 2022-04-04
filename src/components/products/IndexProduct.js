@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Dropdown, Button } from 'react-bootstrap'
+import { Card, Dropdown,DropdownButton, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { getAllProducts } from '../../api/products'
 
@@ -7,6 +7,11 @@ const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'center',
     flexFlow: 'row wrap'
+}
+
+const categoryLinks = {
+    color: 'black',
+    textDecoration: 'none'
 }
 
 const IndexProducts = (props) => {
@@ -53,20 +58,16 @@ const IndexProducts = (props) => {
         ))
     }
 
+    
+
     return (
         <>
             <h3>Browse Some Products</h3>
-            <Dropdown>
-				<Dropdown.Toggle variant="primary" id="dropdown-basic">
-					Categories
-				</Dropdown.Toggle>
-
-				<Dropdown.Menu>
-					<Link to = {`/products/clothing`} style={{textDecoration:'none' , color:'black'}}>Clothing</Link><br/>
-					<Link to = {`/products/collectibles`} style={{textDecoration:'none', color:'black' }}>Collectibles</Link><br/>
-					<Link to = {`/products/electronics`} style={{textDecoration:'none', color:'black'}}> Electronics </Link>
-				</Dropdown.Menu>
-			</Dropdown>
+            <DropdownButton id="dropdown-basic-button" title="Categories" >
+				<Dropdown.Item><Link to='/products/clothing' style={categoryLinks}>Clothing</Link></Dropdown.Item>
+				<Dropdown.Item><Link to='/products/electronics' style={categoryLinks}>Electronics</Link></Dropdown.Item>
+				<Dropdown.Item><Link to='/products/collectibles' style={categoryLinks}>Collectibles</Link></Dropdown.Item>
+			</DropdownButton>
             <div style={cardContainerLayout}>
                 {productCards}
             </div>

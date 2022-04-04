@@ -8,8 +8,9 @@ const linkStyle = {
 }
 const categoryLinkStyle = {
     color: 'black',
-    textDecoration: 'none'
+    textDecoration: 'none',
 }
+
 const authenticatedOptions = (
 	<>
 		<Nav.Item className='m-2'>

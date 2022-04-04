@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
+import Axios from 'axios'
 
 const ProductForm = (props) => {
     const {product, handleChange, handleSubmit, heading} = props
+
     return(
         <Container className="justify-content-center">
              <h3>{heading}</h3>
@@ -59,7 +61,6 @@ const ProductForm = (props) => {
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>
-           
     )
 }
 
