@@ -18,6 +18,7 @@ import ShowProduct from './components/products/ShowProduct'
 import ClothingProducts from './components/categories/ClothingProducts'
 import CollectiblesProducts from './components/categories/CollectiblesProducts'
 import ElectronicsProducts from './components/categories/ElectronicsProducts'
+import MineProducts from './components/products/MineProducts'
 
 const App = () => {
 
@@ -101,7 +102,15 @@ const App = () => {
 							<CreateProduct msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 					/>
-				</Routes>
+					<Route
+						path='/products/mine'
+						element={
+							<RequireAuth user={user}>
+								<MineProducts msgAlert={msgAlert} user={user}/>
+							</RequireAuth>
+						}
+					/>
+					</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
 						key={msgAlert.id}

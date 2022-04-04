@@ -13,7 +13,7 @@ const categoryLinkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Item className='m-2'>
-			<Link to='/products' style={linkStyle}>
+			<Link to='/products/mine' style={linkStyle}>
 				My Listings
 			</Link>
 		</Nav.Item>
