@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getAllCollectibles } from '../../api/products'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const cardContainerLayout = {
@@ -37,8 +37,16 @@ const CollectibleProducts = (props) => {
                     <Card.Title className='m-2'>{product.name}</Card.Title>
                     <Card.Body>
                         <Card.Text>Seller: {product.owner.username}</Card.Text>
+                        <Link to={`/products/${product._id}`}>
+                            <Card.Img
+                            src={product.image}
+                            alt='product image'
+                            width='200px'
+                            height='400px'
+                            />
+                        </Link>
                         <Card.Text>
-                            <Link to={`/products/${product._id}`}>View</Link>
+                            <Button href={`/products/${product._id}`}>View {product.name}</Button>
                         </Card.Text>
                     </Card.Body>
                 </Card>
