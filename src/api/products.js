@@ -21,14 +21,14 @@ export const getAllClothing = () => {
     return axios(`${apiUrl}/products/clothing`)
 }
 
-// GET -> Clothing category
-export const getAllCartItems = () => {
-    return axios(`${apiUrl}/orders`)
+// GET -> Shopping Cart
+export const getAllCartItems = (userId) => {
+    return axios(`${apiUrl}/orders/${userId}`)
 }
 
 // GET -> Checkout
-export const getAllCheckoutItems = () => {
-    return axios(`${apiUrl}/checkout`)
+export const getAllCheckoutItems = (userId) => {
+    return axios(`${apiUrl}/checkout/${userId}`)
 }
 
 // GET -> Show function
