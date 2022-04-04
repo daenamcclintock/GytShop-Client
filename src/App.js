@@ -20,6 +20,7 @@ import CollectiblesProducts from './components/categories/CollectiblesProducts'
 import ElectronicsProducts from './components/categories/ElectronicsProducts'
 import MineProducts from './components/products/MineProducts'
 import MyCart from './components/cart/MyCart'
+import Checkout from './components/cart/Checkout'
 
 const App = () => {
 
@@ -95,6 +96,10 @@ const App = () => {
 					<Route
 						path='/orders'
 						element={<MyCart msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/checkout'
+						element={<Checkout msgAlert={msgAlert} setUser={setUser} />}
 					/>
 					<Route
 						path='/products/:productId'
