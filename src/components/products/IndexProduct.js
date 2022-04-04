@@ -58,6 +58,8 @@ const IndexProducts = (props) => {
         ))
     }
 
+    
+
     return (
         <>
             <h3>Browse Some Products</h3>
