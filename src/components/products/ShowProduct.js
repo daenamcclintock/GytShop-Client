@@ -118,18 +118,25 @@ const ShowProduct = (props) => {
             </Container>
         )
     }
+    console.log(user._id,'is our user in show')
 
     // When you click 'Add To Cart' you need to send the productId to an order route to push it to productsOrdered array
 
     return(
         <>
             <Container>
-            <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
-                Edit Product
-            </Button>
-            <Button onClick={() => removeTheProduct()} className="m-2" variant="danger">
-                Delete Product
-            </Button>
+                <Card.Body>
+                    {product.owner == user._id &&
+                    <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
+                        Edit Product
+                    </Button>
+                    }
+                    {product.owner == user._id && 
+                <Button onClick={() => removeTheProduct()} className="m-2" variant="danger">
+                    Delete Product
+                </Button>
+                    }
+                </Card.Body>
                 <h3><b>{product.name}</b></h3>
                 <Card.Img style = {{width:"18rem"}}
                     src={product.image}
