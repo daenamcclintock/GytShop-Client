@@ -96,8 +96,9 @@ export const getAllCartItems = (userId, user) => {
 
 // POST -> Add to Cart
 export const addToCart = (productId, user, addProduct) => {
+    console.log({ productId })
     return(axios({
-        url: `${apiUrl}/orders/${productId}`,
+        url: `${apiUrl}/products/${productId}`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`

@@ -32,9 +32,6 @@ const IndexProducts = (props) => {
         return <p>Add a product.</p>
     }
 
-    console.log('products', products)
-    console.log('product owner', products[0].owner.username)
-
     let productCards
     console.log('products in our index', products.owner)
 
