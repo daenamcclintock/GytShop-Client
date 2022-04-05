@@ -12,16 +12,19 @@ const cardContainerLayout = {
 const MyCart = (props) => {
     const [products, setProducts] = useState(null)
     const {userId} = useParams()
+    const {user, msgAlert} = props
 
     useEffect(() => {
-        getAllCartItems(userId)
+        getAllCartItems(userId, user)
             .then(res => {
-                setProducts(res.data.products)
+                console.log('res: ', res)
+                setProducts(res.data.orders)
             })
             .catch(console.error)
     }, [userId])
     console.log('this is the user id: ', userId)
     console.log('these are the products', products)
+    console.log('this is the user\'s token', user.token)
 
     if (!products) {
         return <p>Loading...</p>
