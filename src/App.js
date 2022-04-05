@@ -79,27 +79,31 @@ const App = () => {
 					/>
 					<Route
 						path='/products'
-						element={<IndexProducts msgAlert={msgAlert} setUser={setUser} />}
+						element={<IndexProducts msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
 						path='/products/clothing'
-						element={<ClothingProducts msgAlert={msgAlert} setUser={setUser} />}
+						element={<ClothingProducts msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
 						path='/products/collectibles'
-						element={<CollectiblesProducts msgAlert={msgAlert} setUser={setUser} />}
+						element={<CollectiblesProducts msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
 						path='/products/electronics'
-						element={<ElectronicsProducts msgAlert={msgAlert} setUser={setUser} />}
+						element={<ElectronicsProducts msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
 						path='/orders/:userId'
-						element={<MyCart msgAlert={msgAlert} setUser={setUser} />}
+						element={<MyCart msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
 						path='/checkout'
-						element={<Checkout msgAlert={msgAlert} setUser={setUser} />}
+						element={<Checkout msgAlert={msgAlert} user={user} />}
+					/>
+					<Route
+						path='/products/:productId'
+						element={<ShowProduct msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
 						path='/addProduct'

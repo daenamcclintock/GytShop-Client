@@ -83,9 +83,15 @@ export const removeProduct = (user, productId) => {
 
 // *************** SHOPPING CART AXIOS CALLS ***************
 
-// GET -> Shopping Cart
-export const getAllCartItems = (userId) => {
-    return axios(`${apiUrl}/orders/${userId}`)
+// GET -> Shopping Cart of currently logged in user
+export const getAllCartItems = (userId, user) => {
+    return axios({
+        url: `${apiUrl}/orders/${userId}`,
+        method: 'GET',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+    })
 }
 
 // POST -> Add to Cart

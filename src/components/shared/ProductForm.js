@@ -18,35 +18,46 @@ const ProductForm = (props) => {
                     onChange={handleChange}
                 />
                 <Form.Label>Description of Product</Form.Label>
-                    <Form.Control as='textarea'
-                        placeholder="Product description"
-                        value={product.description}
-                        name='description'
-                        onChange={handleChange}
-                    />
+                <Form.Control as='textarea'
+                    placeholder="Product description"
+                    value={product.description}
+                    name='description'
+                    onChange={handleChange}
+                />
                 <Form.Label>Category of Product</Form.Label>
-                    <Form.Control
-                        placeholder="Category"
-                        value={product.category}
-                        name='category'
-                        onChange={handleChange}
-                    />
+                <Form.Control
+                    placeholder="Category"
+                    value={product.category}
+                    name='category'
+                    onChange={handleChange}
+                />
+                {/* <Dropdown className="d-inline mx-2" autoClose="inside">
+                    <Dropdown.Toggle id="dropdown-autoclose-inside">
+                    Category of Product
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                    <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+                    <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+                    <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown> */}
                 <Form.Label>Price of Product</Form.Label>
-                    <Form.Control
-                        type='number'
-                        placeholder="Price of Product"
-                        value={product.price}
-                        name='price'
-                        onChange={handleChange}
-                    />
+                <Form.Control
+                    type='number'
+                    placeholder="Price of Product"
+                    value={product.price}
+                    name='price'
+                    onChange={handleChange}
+                />
                 <Form.Label>Current Stock</Form.Label>
-                    <Form.Control
-                        type='number'   
-                        placeholder="Number in Stock"
-                        value={product.stock}
-                        name='stock'
-                        onChange={handleChange}
-                    />
+                <Form.Control
+                    type='number'   
+                    placeholder="Number in Stock"
+                    value={product.stock}
+                    name='stock'
+                    onChange={handleChange}
+                />
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>
