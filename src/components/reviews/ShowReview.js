@@ -5,7 +5,7 @@ import { removeReview } from '../../api/reviews'
 
 const ShowReview = (props) => {
     // most of these are simply to pass to edit modal
-    const {review, product, user, triggerRefresh, msgAlert} = props
+    const {review, product, user, triggerRefresh} = props
 
     const [showEditModal, setShowEditModal] = useState(false)
 
@@ -42,7 +42,6 @@ const ShowReview = (props) => {
                 review={review}
                 show={showEditModal}
                 handleClose={() => setShowEditModal(false)}
-                msgAlert={msgAlert}
                 triggerRefresh={triggerRefresh}
             />
         </>

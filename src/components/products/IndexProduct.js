@@ -34,6 +34,7 @@ const IndexProducts = (props) => {
     }
 
     let productCards
+    console.log('products in our index', products.owner)
 
     if(products.length > 0) {
         productCards = products.map(product => (

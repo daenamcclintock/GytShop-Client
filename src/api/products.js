@@ -44,20 +44,22 @@ export const getOneProduct = (productId) => {
 
 // POST -> Create function
 export const createProduct = (user, newProduct) => {
+    console.log('user in creating a product', user)
     return axios({
         url: `${apiUrl}/products`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`
-        },
+        },  
         data: { product: newProduct }
     })
 }
 
 // PATCH -> Update function
 export const updateProduct = (user, updatedProduct) => {
+    console.log('user in editing product' ,user)
     return axios({
-        url: `${apiUrl}/products/${updatedProduct.id}`,
+        url: `${apiUrl}/products/${updatedProduct._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
@@ -68,6 +70,7 @@ export const updateProduct = (user, updatedProduct) => {
 
 // DELETE -> Remove function
 export const removeProduct = (user, productId) => {
+    console.log('user in deleting product', user)
     return axios({
         url: `${apiUrl}/products/${productId}`,
         method: 'DELETE',
@@ -80,43 +83,45 @@ export const removeProduct = (user, productId) => {
 
 // *************** SHOPPING CART AXIOS CALLS ***************
 
-// GET -> Shopping Cart
-export const getAllCartItems = (userId) => {
-    return axios(`${apiUrl}/orders/${userId}`)
-}
+// // GET -> Shopping Cart
+// export const getAllCartItems = (userId) => {
+//     return axios(`${apiUrl}/orders/${userId}`)
+// }
 
-// POST -> Add to Cart
-export const addToCart = (productId, user, addProduct) => {
-    return(axios({
-        url: `${apiUrl}/orders/${productId}`,
-        method: 'POST',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-        data: { product: addProduct }
-    }))
-}
+// // POST -> Add to Cart
+// export const addToCart = (productId, user, addProduct) => {
+//     return(axios({
+//         url: `${apiUrl}/orders/${productId}`,
+//         method: 'POST',
+//         headers: {
+//             Authorization: `Token token=${user.token}`
+//         },
+//         data: { product: addProduct }
+//     }))
+// }
 
-// PATCH -> Update cart
-export const updateCart = (user, updatedProduct) => {
-    return axios({
-        url: `${apiUrl}/products/${updatedProduct.id}`,
-        method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-        data: { product: updatedProduct }
-    })
-}
+// // PATCH -> Update cart
+// export const updateCart = (user, updatedProduct) => {
+//     console.log('user', user)
+//     console.log('this is the updated Product', updatedProduct)
+//     return axios({
+//         url: `${apiUrl}/products/${updatedProduct.id}`,
+//         method: 'PATCH',
+//         headers: {
+//             Authorization: `Token token=${user.token}`
+//         },
+//         data: { product: updatedProduct }
+//     })
+// }
 
-// DELETE -> Remove Cart Product
-export const removeCartProduct = (user, productId) => {
-    return(axios({
-        url: `${apiUrl}/products/${productId}`,
-        method: 'DELETE',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-        data: { product: '' }
-    }))
-}
+// // DELETE -> Remove Cart Product
+// export const removeCartProduct = (user, productId) => {
+//     return(axios({
+//         url: `${apiUrl}/products/${productId}`,
+//         method: 'DELETE',
+//         headers: {
+//             Authorization: `Token token=${user.token}`
+//         },
+//         data: { product: '' }
+//     }))
+// }

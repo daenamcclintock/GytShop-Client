@@ -102,10 +102,6 @@ const App = () => {
 						element={<Checkout msgAlert={msgAlert} setUser={setUser} />}
 					/>
 					<Route
-						path='/products/:productId'
-						element={<ShowProduct msgAlert={msgAlert} setUser={setUser} />}
-					/>
-					<Route
 						path='/addProduct'
 						element={
 						<RequireAuth user={user}>
@@ -119,6 +115,10 @@ const App = () => {
 								<MineProducts msgAlert={msgAlert} user={user}/>
 							</RequireAuth>
 						}
+					/>
+					<Route
+						path='/products/:productId'
+						element={<ShowProduct msgAlert={msgAlert} user={user} />}
 					/>
 					</Routes>
 				{msgAlerts.map((msgAlert) => (

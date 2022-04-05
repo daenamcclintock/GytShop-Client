@@ -23,9 +23,12 @@ const EditProductsModel = (props) => {
         })
     }
 
+
+
     const handleSubmit = (e) => {
+        
         e.preventDefault()
-    
+        console.log('here is our user in edit', user)
         updateProduct(user,product)
             .then(() => handleClose())
             .then(()=> triggerRefresh())

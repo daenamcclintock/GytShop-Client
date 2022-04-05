@@ -6,13 +6,19 @@ import EditProductsModel from './EditProductsModel'
 import ShowReview from "../reviews/ShowReview";
 import GiveReviewModal from "../reviews/GiveReviewModal";
 
+const cardContainerLayout= {
+    display:'flex',
+    justifyContent:'center',
+    flexFlow:'row wrap'
+}
+
 const ShowProduct = (props) => {
     const [modalOpen, setModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [product, setProduct] = useState(null)
     const {productId} = useParams()
-    const { user, msgAlert,review } = props
+    const { user, msgAlert} = props
     const navigate = useNavigate()
 
     const formControlStyle = {
@@ -66,8 +72,8 @@ const ShowProduct = (props) => {
     }
 
 
-    const deleteProduct = () => {
-        removeProduct(user, product.id)
+    const removeTheProduct = () => {
+        removeProduct(user, product._id)
         .then(() => {
             msgAlert({
                 heading: 'Product Removed!',
@@ -86,18 +92,21 @@ const ShowProduct = (props) => {
     }
 
 
-    // let reviewCards
-    // if (product) {
+    let reviewCards
+
+    // if(product){
     //     if (product.reviews.length > 0) {
     //         reviewCards = product.reviews.map(review => (
-    //             <ShowReview 
-    //                 key={review._id} review={review} product={product} 
-    //                 user={user} msgAlert={msgAlert}
-    //                 triggerRefresh={() => setUpdated(prev => !prev)}
+    //             <ShowReview
+    //                  review={review} 
+    //                 user={user} product={product}
+    //                  triggerRefresh={() => setUpdated(prev => !prev)}
     //             />
     //         ))
     //     }
     // }
+    
+
 
     if(!product)
     {
@@ -118,8 +127,8 @@ const ShowProduct = (props) => {
             <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                 Edit Product
             </Button>
-            <Button onClick={() => deleteProduct()} className="m-2" variant="danger">
-                Delete Anime
+            <Button onClick={() => removeTheProduct()} className="m-2" variant="danger">
+                Delete Product
             </Button>
                 <h3><b>{product.name}</b></h3>
                 <Card.Img style = {{width:"18rem"}}
@@ -143,6 +152,12 @@ const ShowProduct = (props) => {
                         Review this product
                     </Button>
                 </Form>
+                <Container style={cardContainerLayout}>
+                    {reviewCards}    
+                </Container>
+            </Container>
+            <Container>
+                {reviewCards}
             </Container>
             <EditProductsModel 
                 product={product}
@@ -153,7 +168,6 @@ const ShowProduct = (props) => {
                 handleClose={() => setModalOpen(false)}
             />
             <GiveReviewModal
-                review={review}
                 show={reviewModalOpen}
                 user={user}
                 msgAlert={msgAlert}
