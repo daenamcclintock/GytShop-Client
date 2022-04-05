@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getOneProduct } from "../../api/products";
+import { getOneProduct,updateProduct } from "../../api/products";
 import { Spinner, Container, Card, Button, Form } from "react-bootstrap";
+import EditProductsModel from './EditProductsModel'
+
 
 const ShowProduct = (props) => {
+    const [modalOpen, setModalOpen] = useState(false)
+    const [updated, setUpdated] = useState(false)
     const [product, setProduct] = useState(null)
     const {productId} = useParams()
     const { user, msgAlert } = props
@@ -19,7 +23,7 @@ const ShowProduct = (props) => {
         getOneProduct(productId)
             .then( res => setProduct(res.data.product))
             .catch(console.error)
-    }, [productId])
+    }, [updated])
 
     // console.log('product: ', product)
 
@@ -75,6 +79,9 @@ const ShowProduct = (props) => {
     return(
         <>
             <Container>
+            <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
+                Edit Product
+            </Button>
                 <h3><b>{product.name}</b></h3>
                 <Card.Img
                     src={product.image}
@@ -95,6 +102,14 @@ const ShowProduct = (props) => {
                     <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
                 </Form>
             </Container>
+            <EditProductsModel 
+                product={product}
+                show={modalOpen}
+                user={user}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                updateProduct={updateProduct}
+                handleClose={() => setModalOpen(false)}
+            />
         </>
     )
 }
