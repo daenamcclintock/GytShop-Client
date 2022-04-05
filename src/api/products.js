@@ -68,14 +68,13 @@ export const updateProduct = (user, updatedProduct) => {
 
 // DELETE -> Remove function
 export const removeProduct = (user, productId) => {
-    return(axios({
+    return axios({
         url: `${apiUrl}/products/${productId}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
-        },
-        data: { product: '' }
-    }))
+        }
+    })
 }
 
 

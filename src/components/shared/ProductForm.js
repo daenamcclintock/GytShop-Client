@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
-import Axios from 'axios'
+
 
 const ProductForm = (props) => {
     const {product, handleChange, handleSubmit, heading} = props

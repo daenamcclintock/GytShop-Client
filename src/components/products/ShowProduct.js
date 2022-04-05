@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getOneProduct,updateProduct } from "../../api/products";
+import { getOneProduct,updateProduct, removeProduct} from "../../api/products";
 import { Spinner, Container, Card, Button, Form } from "react-bootstrap";
 import EditProductsModel from './EditProductsModel'
 
@@ -63,6 +63,26 @@ const ShowProduct = (props) => {
         console.log('submitted!')
     }
 
+
+    const deleteProduct = () => {
+        removeProduct(user, product.id)
+        .then(() => {
+            msgAlert({
+                heading: 'Product Removed!',
+                message: 'Product Successfully deleted',
+                variant: 'success',
+            })
+        })
+            .then(()=> {navigate('/')})
+            .catch(() => {
+                msgAlert({
+                    heading: 'Something Went Wrong',
+                    message: 'Unable to delete',
+                    variant: 'danger',
+                })
+            })
+    }
+
     if(!product)
     {
         return (
@@ -82,8 +102,11 @@ const ShowProduct = (props) => {
             <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                 Edit Product
             </Button>
+            <Button onClick={() => deleteProduct()} className="m-2" variant="danger">
+                Delete Anime
+            </Button>
                 <h3><b>{product.name}</b></h3>
-                <Card.Img
+                <Card.Img style = {{width:"18rem"}}
                     src={product.image}
                     alt='product image'
                 />
