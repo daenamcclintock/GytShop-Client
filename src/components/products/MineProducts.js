@@ -45,7 +45,9 @@ const MineProducts = (props) => {
                             height='400px'
                             />
                         </Link>
-                    <Card.Text>
+                    <Card.Text> 
+
+                        
                         <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
                     </Card.Text>
                 </Card.Body>
