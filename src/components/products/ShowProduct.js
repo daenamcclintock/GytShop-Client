@@ -3,14 +3,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getOneProduct,updateProduct, removeProduct} from "../../api/products";
 import { Spinner, Container, Card, Button, Form } from "react-bootstrap";
 import EditProductsModel from './EditProductsModel'
-
+import ShowReview from "../reviews/ShowReview";
+import GiveReviewModal from "../reviews/GiveReviewModal";
 
 const ShowProduct = (props) => {
     const [modalOpen, setModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
+    const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [product, setProduct] = useState(null)
     const {productId} = useParams()
-    const { user, msgAlert } = props
+    const { user, msgAlert,review } = props
     const navigate = useNavigate()
 
     const formControlStyle = {
@@ -83,6 +85,20 @@ const ShowProduct = (props) => {
             })
     }
 
+
+    let reviewCards
+    if (product) {
+        if (product.reviews.length > 0) {
+            reviewCards = product.reviews.map(review => (
+                <ShowReview 
+                    key={review._id} review={review} product={product} 
+                    user={user} msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            ))
+        }
+    }
+
     if(!product)
     {
         return (
@@ -123,6 +139,9 @@ const ShowProduct = (props) => {
                         style={formControlStyle}
                     />
                     <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
+                    <Button onClick={() => setReviewModalOpen(true)} className="m-2" variant="info">
+                        Review this product
+                    </Button>
                 </Form>
             </Container>
             <EditProductsModel 
@@ -132,6 +151,14 @@ const ShowProduct = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 updateProduct={updateProduct}
                 handleClose={() => setModalOpen(false)}
+            />
+            <GiveReviewModal
+                review={review}
+                show={reviewModalOpen}
+                user={user}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setReviewModalOpen(false)}
             />
         </>
     )
