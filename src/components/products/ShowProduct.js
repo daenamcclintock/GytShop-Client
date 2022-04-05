@@ -86,18 +86,18 @@ const ShowProduct = (props) => {
     }
 
 
-    let reviewCards
-    if (product) {
-        if (product.reviews.length > 0) {
-            reviewCards = product.reviews.map(review => (
-                <ShowReview 
-                    key={review._id} review={review} product={product} 
-                    user={user} msgAlert={msgAlert}
-                    triggerRefresh={() => setUpdated(prev => !prev)}
-                />
-            ))
-        }
-    }
+    // let reviewCards
+    // if (product) {
+    //     if (product.reviews.length > 0) {
+    //         reviewCards = product.reviews.map(review => (
+    //             <ShowReview 
+    //                 key={review._id} review={review} product={product} 
+    //                 user={user} msgAlert={msgAlert}
+    //                 triggerRefresh={() => setUpdated(prev => !prev)}
+    //             />
+    //         ))
+    //     }
+    // }
 
     if(!product)
     {
