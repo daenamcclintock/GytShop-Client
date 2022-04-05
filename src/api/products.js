@@ -44,20 +44,22 @@ export const getOneProduct = (productId) => {
 
 // POST -> Create function
 export const createProduct = (user, newProduct) => {
+    console.log('user in creating a product', user)
     return axios({
         url: `${apiUrl}/products`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`
-        },
+        },  
         data: { product: newProduct }
     })
 }
 
 // PATCH -> Update function
 export const updateProduct = (user, updatedProduct) => {
+    console.log('user in editing product' ,user)
     return axios({
-        url: `${apiUrl}/products/${updatedProduct.id}`,
+        url: `${apiUrl}/products/${updatedProduct._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
@@ -68,14 +70,14 @@ export const updateProduct = (user, updatedProduct) => {
 
 // DELETE -> Remove function
 export const removeProduct = (user, productId) => {
-    return(axios({
+    console.log('user in deleting product', user)
+    return axios({
         url: `${apiUrl}/products/${productId}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
-        },
-        data: { product: '' }
-    }))
+        }
+    })
 }
 
 
@@ -106,6 +108,8 @@ export const addToCart = (productId, user, addProduct) => {
 
 // PATCH -> Update cart
 export const updateCart = (user, updatedProduct) => {
+    console.log('user', user)
+    console.log('this is the updated Product', updatedProduct)
     return axios({
         url: `${apiUrl}/products/${updatedProduct.id}`,
         method: 'PATCH',

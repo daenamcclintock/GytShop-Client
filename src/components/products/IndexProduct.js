@@ -36,6 +36,7 @@ const IndexProducts = (props) => {
     console.log('product owner', products[0].owner.username)
 
     let productCards
+    console.log('products in our index', products.owner)
 
     if(products.length > 0) {
         productCards = products.map(product => { 

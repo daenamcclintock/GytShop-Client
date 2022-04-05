@@ -120,6 +120,10 @@ const App = () => {
 							</RequireAuth>
 						}
 					/>
+					<Route
+						path='/products/:productId'
+						element={<ShowProduct msgAlert={msgAlert} user={user} />}
+					/>
 					</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
