@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getAllCartItems } from '../../api/products'
 import { Card, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -11,14 +11,17 @@ const cardContainerLayout = {
 
 const MyCart = (props) => {
     const [products, setProducts] = useState(null)
+    const {userId} = useParams()
 
     useEffect(() => {
-        getAllCartItems()
+        getAllCartItems(userId)
             .then(res => {
                 setProducts(res.data.products)
             })
             .catch(console.error)
-    }, [])
+    }, [userId])
+    console.log('this is the user id: ', userId)
+    console.log('these are the products', products)
 
     if (!products) {
         return <p>Loading...</p>

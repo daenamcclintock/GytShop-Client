@@ -11,7 +11,7 @@ const categoryLinkStyle = {
     textDecoration: 'none',
 }
 
-const authenticatedOptions = (
+const authenticatedOptions = ({user}) => (
 	<>
 		<Nav.Item className='m-2'>
 			<Link to='/products/mine' style={linkStyle}>
@@ -29,7 +29,7 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
-			<Link to='/orders' style={linkStyle}>
+			<Link to={`/orders/${user._id}`} style={linkStyle}>
 				My Cart
 			</Link>
 		</Nav.Item>
@@ -88,7 +88,7 @@ const Header = ({ user }) => (
 					<span className='navbar-text mr-2'>Welcome, {user.username}</span>
 				)}
 				{alwaysOptions}
-				{user ? authenticatedOptions : unauthenticatedOptions}
+				{user ? authenticatedOptions({user}) : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>
