@@ -76,7 +76,7 @@ const ShowProduct = (props) => {
         <>
             <Container>
                 <h3><b>{product.name}</b></h3>
-                <Card.Img
+                <Card.Img style={{width:'18rem'}}
                     src={product.image}
                     alt='product image'
                 />
