@@ -4,8 +4,9 @@ import { getOneProduct,updateProduct, removeProduct } from "../../api/products";
 import { Spinner, Container, Card, Button, Form } from "react-bootstrap";
 import { addToCart } from "../../api/products";
 import EditProductsModel from './EditProductsModel'
-import ReviewForm from '../reviews/ReviewForm'
+// import ReviewForm from '../reviews/ReviewForm'
 import ShowReview from '../reviews/ShowReview'
+import GiveReview from '../reviews/GiveReview'
 
 const ShowProduct = (props) => {
     const [modalOpen, setModalOpen] = useState(false)
@@ -150,14 +151,17 @@ const ShowProduct = (props) => {
                         style={formControlStyle}
                     />
                     <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
+                    <Button onClick={()=> setReviewModalOpen(true)}> Leave a Review</Button>
                 </Form>
             </Container>
             <h3>Reviews: </h3>
                 {reviews}
-                <ReviewForm
+                <GiveReview
                     user={user}
+                    show= {reviewModalOpen}
                     product={product}
                     triggerRefresh={() => setUpdated(prev => !prev)}
+                    handleClose={()=> setReviewModalOpen(false)}
                 />
             <EditProductsModel 
                 product={product}
