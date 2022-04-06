@@ -34,6 +34,15 @@ const MyCart = (props) => {
         return <p>Shopping Cart is Empty. Add an item!</p>
     }
 
+    // Gets the total cost of all the products in the cart
+    let totalPrice = 0
+    for(let i = 0; i < products.length; i++)
+    {
+        totalPrice += products[i].price
+    }
+
+    console.log('total price: ', totalPrice)
+
     let productCards
 
     if(products.length > 0) {
@@ -43,7 +52,8 @@ const MyCart = (props) => {
                     <Card.Img variant="top" src="" />
                     <Card.Title className='m-2'>{product.name}</Card.Title>
                     <Card.Body>
-                        <Card.Text>Seller: {product.owner.username}</Card.Text>
+                        <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text>
+                        <Card.Text>$ {product.price}</Card.Text>   
                         <Link to={`/products/${product._id}`}>
                             <Card.Img
                             src={product.image}
@@ -67,6 +77,7 @@ const MyCart = (props) => {
             <div style={cardContainerLayout}>
                 {productCards}
             </div>
+            <p style={cardContainerLayout}>Total: ${totalPrice}</p>
         </>
     )
 }
