@@ -109,7 +109,6 @@ export const addToCart = (productId, user, addProduct) => {
 
 // PATCH -> Update cart
 export const updateCart = (user, updatedProduct) => {
-    console.log('user', user)
     console.log('this is the updated Product', updatedProduct)
     return axios({
         url: `${apiUrl}/products/${updatedProduct.id}`,
@@ -123,8 +122,21 @@ export const updateCart = (user, updatedProduct) => {
 
 // DELETE -> Remove Cart Product
 export const removeCartProducts = (user) => {
+    console.log( user , 'in delete many')
     return axios({
         url: `${apiUrl}/orders/${user._id}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { product: '' }
+    })
+}
+
+// DELETE -> Remove One Cart Product
+export const removeOneCartProduct = (user, product) => {
+    return axios({
+        url: `${apiUrl}/orders/${user._id}/${product}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`

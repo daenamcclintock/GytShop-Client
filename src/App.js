@@ -124,6 +124,10 @@ const App = () => {
 						path='/products/:productId'
 						element={<ShowProduct msgAlert={msgAlert} user={user} />}
 					/>
+					<Route
+						path='/orders/:userId'
+						element={<ShowProduct msgAlert={msgAlert} user={user} />}
+					/>
 					</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert

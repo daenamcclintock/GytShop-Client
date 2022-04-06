@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getAllCartItems, removeCartProducts } from '../../api/products'
+import { getAllCartItems, removeCartProducts, removeOneCartProduct } from '../../api/products'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
@@ -48,6 +48,25 @@ const MyCart = (props) => {
     }
 
 
+    const removeOneProduct = (e) => {
+        removeOneCartProduct(user, userId)
+            .then(() => 
+                msgAlert({
+                    heading: 'Products removed',
+                    message: "The Product has been Removed" ,
+                    variant: 'success'
+            }))
+        .then(() => navigate(`/orders/${userId}`))
+            .catch(() => 
+                msgAlert({
+                    heading: 'Something Went Wrong!',
+                    message: 'please try again',
+                    variant: 'danger'
+            }))
+    }
+    
+    
+
     // If products is null
     if (!products) {
         return <p>Loading...</p>
@@ -87,7 +106,7 @@ const MyCart = (props) => {
                         <Card.Text>
                             <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
                             <Button 
-                                // onClick 
+                                onClick ={()=> removeOneProduct()}
                                 triggerRefresh={() => setUpdated(prev => !prev)} 
                                 variant="danger"
                                 >Remove
