@@ -1,50 +1,49 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
-import EditReviewModal from './EditReviewModal'
 import { removeReview } from '../../api/reviews'
+// import EditReviewModal from './EditReviewModal'
 
 const ShowReview = (props) => {
     // most of these are simply to pass to edit modal
-    const {review, product, user, triggerRefresh} = props
+    const {review, user, product, triggerRefresh} = props
 
-    const [showEditModal, setShowEditModal] = useState(false)
+    const [reviewOwner, setReviewOwner] = useState(null)
+    const [showEditModal ,setShowEditModal] = useState(false)
+
+
+
 
     const destroyReview = () => {
-        removeReview (user, product._id, review._id)
+        removeReview(user, product._id, review._id)
             .then(() => triggerRefresh())
+            // if there is an error, we'll send an error message
+            .catch(console.error)
     }
 
-    
+const username= user.username
+// console.log('here is our review owner', review.owner) 
+// console.log('here is our review owner username', review.owner.username) 
+console.log('user', )
+
     return (
         <>
             <Card className="m-2">
-                <Card.Header>{review.note}</Card.Header>
                 <Card.Body>
+                    <small>{review.note}</small><br/>
                     {
-                        user && (user.id === product.owner.id) 
+                        user && (user.id === product.owner.id)
                         ?
-                            <>
-                                <Button variant="warning" onClick={() => setShowEditModal(true)}>
-                                    Edit Review
-                                </Button>
-                                <Button onClick={() => destroyReview()}variant="danger">
-                                    Delete Review
-                                </Button>
-                            </>
-                        :
-                        null
-                    }
-                </Card.Body>
-            </Card>
-            <EditReviewModal 
-                user={user}
-                product={product}
-                review={review}
-                show={showEditModal}
-                handleClose={() => setShowEditModal(false)}
-                triggerRefresh={triggerRefresh}
-            />
-        </>
+                        <>
+                    <Button onClick={()=> destroyReview()}variant="danger">
+                        Delete Review    
+                    </Button>
+                    </>
+        :
+        null
+        }
+        </Card.Body>
+    </Card>
+    </>
     )
 }
 
