@@ -5,7 +5,7 @@ import { addReview, removeReview } from '../../api/reviews'
 
 const ReviewForm = (props) => {
     
-    const { product,show, heading, triggerRefresh, user,handleClose, handleChange, handleSubmit,review} = props
+    const {handleChange, handleSubmit,review} = props
     // const [review, setReview] = useState("")
 
 

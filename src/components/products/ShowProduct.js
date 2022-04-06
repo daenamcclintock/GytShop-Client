@@ -151,16 +151,7 @@ const ShowProduct = (props) => {
                         style={formControlStyle}
                     />
                     <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
-
-                    {
-                    user && (product.owner == user._id)
-                    ?
-                    <>
                     <Button onClick={()=> setReviewModalOpen(true)}> Leave a Review</Button>
-                    </>
-                    :
-                    null
-                    }   
                 </Form>
             </Container>
             <h3>Reviews: </h3>

@@ -28,7 +28,7 @@ const ShowReview = (props) => {
         <>
             <Card className="m-2">
                 <Card.Body>
-                        <div>{review.note}<br/></div>
+                        <h4>{review.note}<br/></h4>
                     {
                         user && (user.id === product.owner.id)
                         ?
