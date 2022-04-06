@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getOneProduct } from "../../api/products";
+import { getOneProduct,updateProduct, removeProduct} from "../../api/products";
 import { Spinner, Container, Card, Button, Form } from "react-bootstrap";
+import EditProductsModel from './EditProductsModel'
+import ReviewForm from '../reviews/ReviewForm'
+import ShowReview from '../reviews/ShowReview'
+
+const cardContainerLayout= {
+    display:'flex',
+    justifyContent:'center',
+    flexFlow:'row wrap'
+}
 
 const ShowProduct = (props) => {
+    const [modalOpen, setModalOpen] = useState(false)
+    const [updated, setUpdated] = useState(false)
+    const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [product, setProduct] = useState(null)
     const {productId} = useParams()
-    const { user, msgAlert } = props
+    const { user, msgAlert} = props
     const navigate = useNavigate()
 
     const formControlStyle = {
@@ -19,7 +31,7 @@ const ShowProduct = (props) => {
         getOneProduct(productId)
             .then( res => setProduct(res.data.product))
             .catch(console.error)
-    }, [productId])
+    }, [updated])
 
     // console.log('product: ', product)
 
@@ -59,6 +71,41 @@ const ShowProduct = (props) => {
         console.log('submitted!')
     }
 
+
+    const removeTheProduct = () => {
+        removeProduct(user, product._id)
+        .then(() => {
+            msgAlert({
+                heading: 'Product Removed!',
+                message: 'Product Successfully deleted',
+                variant: 'success',
+            })
+        })
+            .then(()=> {navigate('/')})
+            .catch(() => {
+                msgAlert({
+                    heading: 'Something Went Wrong',
+                    message: 'Unable to delete',
+                    variant: 'danger',
+                })
+            })
+    }
+
+
+    let reviews
+    
+    if(product) {
+        if(product.reviews.length>0){
+            reviews = product.reviews.map(review=> (
+                <ShowReview key={review._id} updated={updated} review={review} product={product} user={user}
+                triggerRefresh={()=> setUpdated(prev=> !prev)}
+                />
+            ))
+        }
+    }
+    
+
+
     if(!product)
     {
         return (
@@ -70,11 +117,25 @@ const ShowProduct = (props) => {
         )
     }
 
+    console.log(product.owner,'owner in show route')
+
     // When you click 'Add To Cart' you need to send the productId to an order route to push it to productsOrdered array
 
     return(
         <>
             <Container>
+                <Card.Body>
+                    {product.owner == user._id &&
+                    <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
+                        Edit Product
+                    </Button>
+                    }
+                    {product.owner == user._id && 
+                <Button onClick={() => removeTheProduct()} className="m-2" variant="danger">
+                    Delete Product
+                </Button>
+                    }
+                </Card.Body>
                 <h3><b>{product.name}</b></h3>
                 <Card.Img style={{width:'18rem'}}
                     src={product.image}
@@ -95,6 +156,20 @@ const ShowProduct = (props) => {
                     <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
                 </Form>
             </Container>
+                {reviews}
+                <ReviewForm
+                    user={user}
+                    product={product}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            <EditProductsModel 
+                product={product}
+                show={modalOpen}
+                user={user}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                updateProduct={updateProduct}
+                handleClose={() => setModalOpen(false)}
+            />
         </>
     )
 }
