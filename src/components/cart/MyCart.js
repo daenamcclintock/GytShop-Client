@@ -107,7 +107,7 @@ const MyCart = (props) => {
                             <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
                             <Button 
                                 onClick ={()=> removeOneProduct()}
-                                triggerRefresh={() => setUpdated(prev => !prev)} 
+                                triggerRefresh={() => setUpdated(prev => !prev)}
                                 variant="danger"
                                 >Remove
                             </Button>
