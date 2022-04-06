@@ -47,7 +47,7 @@ const ClothingProducts = (props) => {
                             />
                         </Link>
                         <Card.Text>
-                            <Button href={`/products/${product._id}`}>View {product.name}</Button>
+                            <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
                         </Card.Text>
                     </Card.Body>
                 </Card>

@@ -97,14 +97,14 @@ export const getAllCartItems = (userId, user) => {
 // POST -> Add to Cart
 export const addToCart = (productId, user, addProduct) => {
     console.log({ productId })
-    return(axios({
+    return axios({
         url: `${apiUrl}/products/${productId}`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`
         },
         data: { product: addProduct }
-    }))
+    })
 }
 
 // PATCH -> Update cart
@@ -122,13 +122,13 @@ export const updateCart = (user, updatedProduct) => {
 }
 
 // DELETE -> Remove Cart Product
-export const removeCartProduct = (user, productId) => {
-    return(axios({
-        url: `${apiUrl}/products/${productId}`,
+export const removeCartProducts = (user) => {
+    return axios({
+        url: `${apiUrl}/orders/${user._id}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
         },
         data: { product: '' }
-    }))
+    })
 }
