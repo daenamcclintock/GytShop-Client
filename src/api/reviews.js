@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 // POST -> create function
-export const giveReview = (user, productId, newReview) => {
+export const addReview = (user, productId, newReview) => {
     return axios({
         url: `${apiUrl}/reviews/${productId}`,
         method: 'POST',

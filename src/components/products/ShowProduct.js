@@ -3,8 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getOneProduct,updateProduct, removeProduct} from "../../api/products";
 import { Spinner, Container, Card, Button, Form } from "react-bootstrap";
 import EditProductsModel from './EditProductsModel'
-import ShowReview from "../reviews/ShowReview";
-import GiveReviewModal from "../reviews/GiveReviewModal";
+import ReviewForm from '../reviews/ReviewForm'
+import ShowReview from '../reviews/ShowReview'
 
 const cardContainerLayout= {
     display:'flex',
@@ -92,19 +92,17 @@ const ShowProduct = (props) => {
     }
 
 
-    let reviewCards
-
-    // if(product){
-    //     if (product.reviews.length > 0) {
-    //         reviewCards = product.reviews.map(review => (
-    //             <ShowReview
-    //                  review={review} 
-    //                 user={user} product={product}
-    //                  triggerRefresh={() => setUpdated(prev => !prev)}
-    //             />
-    //         ))
-    //     }
-    // }
+    let reviews
+    
+    if(product) {
+        if(product.reviews.length>0){
+            reviews = product.reviews.map(review=> (
+                <ShowReview key={review._id} updated={updated} review={review} product={product} user={user}
+                triggerRefresh={()=> setUpdated(prev=> !prev)}
+                />
+            ))
+        }
+    }
     
 
 
@@ -118,7 +116,8 @@ const ShowProduct = (props) => {
             </Container>
         )
     }
-    console.log(user._id,'is our user in show')
+
+    console.log(product.owner,'owner in show route')
 
     // When you click 'Add To Cart' you need to send the productId to an order route to push it to productsOrdered array
 
@@ -155,17 +154,14 @@ const ShowProduct = (props) => {
                         style={formControlStyle}
                     />
                     <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
-                    <Button onClick={() => setReviewModalOpen(true)} className="m-2" variant="info">
-                        Review this product
-                    </Button>
                 </Form>
-                <Container style={cardContainerLayout}>
-                    {reviewCards}    
-                </Container>
             </Container>
-            <Container>
-                {reviewCards}
-            </Container>
+                {reviews}
+                <ReviewForm
+                    user={user}
+                    product={product}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
             <EditProductsModel 
                 product={product}
                 show={modalOpen}
@@ -173,13 +169,6 @@ const ShowProduct = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 updateProduct={updateProduct}
                 handleClose={() => setModalOpen(false)}
-            />
-            <GiveReviewModal
-                show={reviewModalOpen}
-                user={user}
-                msgAlert={msgAlert}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                handleClose={() => setReviewModalOpen(false)}
             />
         </>
     )
