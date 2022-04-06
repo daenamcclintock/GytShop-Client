@@ -42,7 +42,7 @@ const ShowProduct = (props) => {
             return {...prevProduct, ...updatedValue}
         })
     }
-     
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(typeof productId)
