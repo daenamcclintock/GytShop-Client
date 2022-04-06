@@ -64,10 +64,6 @@ const ShowProduct = (props) => {
                     message: 'Product could not be added to cart',
                     variant: 'danger',
             }))
-        
-        // setProduct( prevProduct => {
-        //     return { stock: prevProduct.stock - 1}
-        // })
         console.log('submitted!')
     }
 
@@ -143,14 +139,6 @@ const ShowProduct = (props) => {
                     <p>In-stock: {product.stock}</p>
                     <p>{product.description}</p>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Label>Qty:</Form.Label>
-                        <Form.Control 
-                            onChange={handleChange} 
-                            type='number'   
-                            value={product.stock}
-                            name='stock'
-                            style={formControlStyle}
-                        />
                         <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
                         <Button onClick={()=> setReviewModalOpen(true)}> Leave a Review</Button>
                     </Form>
