@@ -32,13 +32,13 @@ const MyCart = (props) => {
 
     const clearCart = () => {
         removeCartProducts(user, userId)
-            .then( () => navigate(`/orders/${userId}`))
             .then(() => 
                 msgAlert({
                     heading: 'Products removed',
                     message: 'All products removed from cart',
                     variant: 'success'
             }))
+        .then(() => navigate(`/`))
             .catch(() => 
                 msgAlert({
                     heading: 'Something Went Wrong!',
@@ -101,6 +101,7 @@ const MyCart = (props) => {
 
     return (
         <>
+            <Link to={`/products/${user._id}`}><Button>Check out</Button></Link>
             <h3>My Shopping Cart</h3>
             <h5>Quantity: {products.length}</h5>
             <div style={cardContainerLayout}>
@@ -109,7 +110,7 @@ const MyCart = (props) => {
             <p style={cardContainerLayout}>Total: ${totalPrice}</p>
             <Button 
                 onClick={() => clearCart()} 
-                triggerRefresh={() => setUpdated(prev => !prev)} 
+                triggerRefresh={() => setUpdated(prev => !prev)}
                 variant="danger"
                 >Empty Cart
             </Button>
