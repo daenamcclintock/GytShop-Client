@@ -6,6 +6,7 @@ import { addToCart } from "../../api/products";
 
 const ShowProduct = (props) => {
     const [product, setProduct] = useState(null)
+    const [quantity, setQuantity] = useState(0)
     const {productId} = useParams()
     const { user, msgAlert } = props
     const navigate = useNavigate()
@@ -22,7 +23,7 @@ const ShowProduct = (props) => {
             .catch(console.error)
     }, [productId])
 
-    // console.log('product: ', product)
+    console.log('product: ', product)
 
     const handleChange = (e) => {
         e.persist()
@@ -42,10 +43,6 @@ const ShowProduct = (props) => {
         console.log(typeof productId)
 
         addToCart(productId, user)
-            // .then()
-            // .then(res => {navigate(`/products/${res.data.product._id}`)})
-            // .then(res => console.log('product id: ', res.data.product.))
-
             // Then we send success message
             .then( () =>
                 msgAlert({
@@ -60,6 +57,10 @@ const ShowProduct = (props) => {
                     message: 'Product could not be added to cart',
                     variant: 'danger',
             }))
+        
+        // setProduct( prevProduct => {
+        //     return { stock: prevProduct.stock - 1}
+        // })
         console.log('submitted!')
     }
 
@@ -88,14 +89,14 @@ const ShowProduct = (props) => {
                 <p>In-stock: {product.stock}</p>
                 <p>{product.description}</p>
                 <Form onSubmit={handleSubmit}>
-                    {/* <Form.Label>Qty:</Form.Label>
+                    <Form.Label>Qty:</Form.Label>
                     <Form.Control 
                         onChange={handleChange} 
                         type='number'   
-                        value={product.stock}
-                        name='stock'
-                        style={formControlStyle} */}
-                    {/* /> */}
+                        // value={product.stock}
+                        name='quantity'
+                        style={formControlStyle}
+                    />
                     <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
                 </Form>
             </Container>
