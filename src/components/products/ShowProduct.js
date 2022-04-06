@@ -13,6 +13,7 @@ const ShowProduct = (props) => {
     const [updated, setUpdated] = useState(false)
     const [reviewModalOpen, setReviewModalOpen] = useState(false)
     const [product, setProduct] = useState(null)
+    const [quantity, setQuantity] = useState(0)
     const {productId} = useParams()
     const { user, msgAlert } = props
     const navigate = useNavigate()
@@ -29,7 +30,7 @@ const ShowProduct = (props) => {
             .catch(console.error)
     }, [updated])
 
-    // console.log('product: ', product)
+    console.log('product: ', product)
 
     const handleChange = (e) => {
         e.persist()
@@ -49,10 +50,6 @@ const ShowProduct = (props) => {
         console.log(typeof productId)
 
         addToCart(productId, user)
-            // .then()
-            // .then(res => {navigate(`/products/${res.data.product._id}`)})
-            // .then(res => console.log('product id: ', res.data.product.))
-
             // Then we send success message
             .then( () =>
                 msgAlert({
@@ -67,6 +64,10 @@ const ShowProduct = (props) => {
                     message: 'Product could not be added to cart',
                     variant: 'danger',
             }))
+        
+        // setProduct( prevProduct => {
+        //     return { stock: prevProduct.stock - 1}
+        // })
         console.log('submitted!')
     }
 
@@ -133,26 +134,26 @@ const ShowProduct = (props) => {
                     null
                     }                    
                 </Card.Body>
-                <h3><b>{product.name}</b></h3>
-                <Card.Img style={{width:'18rem'}}
-                    src={product.image}
-                    alt='product image'
-                />
-                <p>${product.price}</p>
-                <p>In-stock: {product.stock}</p>
-                <p>{product.description}</p>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Label>Qty:</Form.Label>
-                    <Form.Control 
-                        onChange={handleChange} 
-                        type='number'   
-                        value={product.stock}
-                        name='stock'
-                        style={formControlStyle}
+                    <h3><b>{product.name}</b></h3>
+                    <Card.Img style={{width:'18rem'}}
+                        src={product.image}
+                        alt='product image'
                     />
-                    <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
-                    <Button onClick={()=> setReviewModalOpen(true)}> Leave a Review</Button>
-                </Form>
+                    <p>${product.price}</p>
+                    <p>In-stock: {product.stock}</p>
+                    <p>{product.description}</p>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Label>Qty:</Form.Label>
+                        <Form.Control 
+                            onChange={handleChange} 
+                            type='number'   
+                            value={product.stock}
+                            name='stock'
+                            style={formControlStyle}
+                        />
+                        <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
+                        <Button onClick={()=> setReviewModalOpen(true)}> Leave a Review</Button>
+                    </Form>
             </Container>
             <h3>Reviews: </h3>
                 {reviews}
@@ -176,16 +177,3 @@ const ShowProduct = (props) => {
 }
 
 export default ShowProduct
-
-
-
-
-
-                    {/* <Form.Label>Qty:</Form.Label>
-                    <Form.Control 
-                        onChange={handleChange} 
-                        type='number'   
-                        value={product.stock}
-                        name='stock'
-                        style={formControlStyle} */}
-                    {/* /> */}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { getAllCartItems } from '../../api/products'
+import { getAllCartItems, removeCartProducts } from '../../api/products'
 import { Card, Button } from 'react-bootstrap'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -11,8 +11,11 @@ const cardContainerLayout = {
 
 const MyCart = (props) => {
     const [products, setProducts] = useState(null)
+    const [updated, setUpdated] = useState(false)
+    const [order, setOrder] = useState(null)
     const {userId} = useParams()
-    const {user, msgAlert} = props
+    const {user, msgAlert, triggerRefresh} = props
+    const navigate = useNavigate()
 
     useEffect(() => {
         getAllCartItems(userId, user)
@@ -22,14 +25,34 @@ const MyCart = (props) => {
             })
             .catch(console.error)
     }, [userId])
+
     console.log('this is the user id: ', userId)
     console.log('these are the products', products)
     console.log('this is the user\'s token', user.token)
 
+    const clearCart = () => {
+        removeCartProducts(user, userId)
+            .then( () => navigate(`/orders/${userId}`))
+            .then(() => 
+                msgAlert({
+                    heading: 'Products removed',
+                    message: 'All products removed from cart',
+                    variant: 'success'
+            }))
+            .catch(() => 
+                msgAlert({
+                    heading: 'Something Went Wrong!',
+                    message: 'please try again',
+                    variant: 'danger'
+            }))
+    }
+
+
+    // If products is null
     if (!products) {
         return <p>Loading...</p>
     }
-
+    // If there are no products in cart
     else if (products.length === 0) {
         return <p>Shopping Cart is Empty. Add an item!</p>
     }
@@ -40,7 +63,6 @@ const MyCart = (props) => {
     {
         totalPrice += products[i].price
     }
-
     console.log('total price: ', totalPrice)
 
     let productCards
@@ -56,15 +78,21 @@ const MyCart = (props) => {
                         <Card.Text>$ {product.price}</Card.Text>   
                         <Link to={`/products/${product._id}`}>
                             <Card.Img
-                            src={product.image}
-                            alt='product image'
-                            width='200px'
-                            height='400px'
+                                src={product.image}
+                                alt='product image'
+                                width='200px'
+                                height='400px'
                             />
                         </Link>
                         <Card.Text>
-                            <Button href={`/products/${product._id}`}>View {product.name}</Button>
-                        </Card.Text>
+                            <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
+                            <Button 
+                                // onClick 
+                                triggerRefresh={() => setUpdated(prev => !prev)} 
+                                variant="danger"
+                                >Remove
+                            </Button>
+                        </Card.Text>      
                     </Card.Body>
                 </Card>
             )
@@ -74,10 +102,17 @@ const MyCart = (props) => {
     return (
         <>
             <h3>My Shopping Cart</h3>
+            <h5>Quantity: {products.length}</h5>
             <div style={cardContainerLayout}>
                 {productCards}
             </div>
             <p style={cardContainerLayout}>Total: ${totalPrice}</p>
+            <Button 
+                onClick={() => clearCart()} 
+                triggerRefresh={() => setUpdated(prev => !prev)} 
+                variant="danger"
+                >Empty Cart
+            </Button>
         </>
     )
 }
