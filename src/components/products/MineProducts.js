@@ -27,7 +27,7 @@ const MineProducts = (props) => {
         return <p>loading...</p>
     }
     else if (myProducts.length === 0) {
-        return <Link to='/addProduct' >Add a Product </Link>
+        return <Link to='/addProduct' > <h4 className="text-center"> Looks like you have nothing for sale, Lets go add one! </h4> </Link>
     }
 
 
