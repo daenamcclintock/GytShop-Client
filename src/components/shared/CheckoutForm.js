@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 
 
 const CheckoutForm = (props) => {
-    const {handleChange, handleSubmit, heading, order,user} = props
+    const {handleChange, handleSubmit, heading, order, user} = props
+    console.log("this is user", user)
 
     return (
         <Container className="justify-content-center">
@@ -22,7 +23,9 @@ const CheckoutForm = (props) => {
                     name='shippingAddress'
                     onChange={handleChange}
                 />
-                    <Button type='submit' > Submit </Button>
+                <Link to={`/orders/${user._id}/payment`}>
+                    <Button type='submit'> Submit </Button>
+                </Link>
             </Form>
         </Container>
     )
