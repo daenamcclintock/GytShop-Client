@@ -50,7 +50,7 @@ const MyCart = (props) => {
     }
 
 
-    const removeOneProduct = (e) => {
+    const removeOneProduct = (user, userId) => {
         removeOneCartProduct(user, userId)
             .then(() => 
                 msgAlert({
@@ -108,7 +108,7 @@ const MyCart = (props) => {
                         <Card.Text>
                             <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
                             <Button 
-                                onClick ={()=> removeOneCartProduct(user, product)}
+                                onClick ={()=> removeOneProduct(user, product)}
                                 triggerRefresh={() => setUpdated(prev => !prev)}
                                 variant="danger"
                                 >Remove
