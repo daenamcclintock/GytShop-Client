@@ -48,7 +48,7 @@ const MineProducts = (props) => {
                     <Card.Text> 
 
                         
-                        <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
+                        <Link to={`/products/${product._id}`}><button className='viewI'>View {product.name}</button></Link>
                     </Card.Text>
                 </Card.Body>
             </Card>
@@ -57,7 +57,7 @@ const MineProducts = (props) => {
 
     return (
         <>
-            <h3>Browse Some Products</h3>
+            <h3 className='userName'>Browse My Products</h3>
             <Dropdown>
                 <Dropdown.Toggle variant="primary" id="dropdown-basic">
                     Categories

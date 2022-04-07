@@ -38,21 +38,23 @@ const IndexProducts = (props) => {
     if(products.length > 0) {
         productCards = products.map(product => { 
             // console.log('product owner: ', product.owner)
-            return (<Card key={product._id} style={{ width: '30%' }} className="m-2">
+            return (<Card key={product._id} style={{ width: '25%'  }} className="m-2">
                 <Card.Img variant="top" src="" />
                 <Card.Title className='m-2'>{product.name}</Card.Title>
                 <Card.Body>
                     <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text>
                         <Link to={`/products/${product._id}`}>
-                            <Card.Img
-                            src={product.image}
-                            alt='product image'
-                            width='200px'
-                            height='400px'
-                            />
+                            <div>
+                                <Card.Img 
+                                src={product.image}
+                                alt='product image'
+                                width='200px'
+                                height='400px'
+                                />
+                            </div>
                         </Link>
                     <Card.Text>
-                        <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
+                        <Link to={`/products/${product._id}`}><button className='viewI'>View {product.name}</button></Link>
                     </Card.Text>
                 </Card.Body>
             </Card>)
@@ -64,7 +66,7 @@ const IndexProducts = (props) => {
 
     return (
         <>
-            <h3>Browse Some Products</h3>
+            <h3 className='userName'>Browse Some Products</h3>
             <DropdownButton id="dropdown-basic-button" title="Categories" >
 				<Dropdown.Item><Link to='/products/clothing' style={categoryLinks}>Clothing</Link></Dropdown.Item>
 				<Dropdown.Item><Link to='/products/electronics' style={categoryLinks}>Electronics</Link></Dropdown.Item>
