@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Container, Button } from 'react-bootstrap'
+import { Form, Container, Button, Dropdown } from 'react-bootstrap'
 
 
 const ProductForm = (props) => {
@@ -24,22 +24,15 @@ const ProductForm = (props) => {
                     name='description'
                     onChange={handleChange}
                 />
-                <Form.Label>Category of Product</Form.Label>
-                <Form.Control
-                    placeholder="Category"
-                    value={product.category}
-                    name='category'
-                    onChange={handleChange}
-                />
                 {/* <Dropdown className="d-inline mx-2" autoClose="inside">
                     <Dropdown.Toggle id="dropdown-autoclose-inside">
                     Category of Product
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                    <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-                    <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-                    <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+                    <Dropdown.Item value={product.category} >electronics</Dropdown.Item>
+                    <Dropdown.Item value={product.category} >clothing</Dropdown.Item>
+                    <Dropdown.Item value={product.category} >collectibles</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown> */}
                 <Form.Label>Price of Product</Form.Label>
@@ -58,6 +51,19 @@ const ProductForm = (props) => {
                     name='stock'
                     onChange={handleChange}
                 />
+                <Form.Group controlId="forBasicSelect">
+                <Form.Label>Category of Product</Form.Label>
+                <Form.Control as='select'
+                    placeholder="Category"
+                    value={product.category}
+                    name='category'
+                    onChange={handleChange}
+                >
+                    <option value="collectibles">Collectibles</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothing">Clothing</option>
+                </Form.Control>
+                </Form.Group>
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>
