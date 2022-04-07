@@ -48,6 +48,7 @@ const SignUp = (props) => {
 
 
     return (
+        <container className='signinBox'>
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3 className='topText'>Sign Up</h3>
@@ -97,14 +98,15 @@ const SignUp = (props) => {
                         />
                     </div>
                     </Form.Group>
-                    <div className='signInB'>
-                        <button className='signInB' variant='primary' type='submit'>
+                    
+                        <button className='signInB' type='submit'>
                             Submit
                     </button>
-                    </div>
+                    
                 </Form>
             </div>
         </div>
+        </container>
     )
 
 }

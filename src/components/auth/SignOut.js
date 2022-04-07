@@ -29,21 +29,27 @@ const SignOut = (props) => {
     }
 
 	return (
-		<>
+		<> 
+        <container className='signinBox'>
             <div className='row'>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    <h2>Are you sure you want to sign out?</h2>
-                    <small>We hate to see you go...</small><br/>
+                    <h2 className='topText'>Are you sure you want to sign out?</h2>
+                    <h6 className='smallText'>We hate to see you go...</h6>
                     <ButtonGroup>
-                        <Button variant='danger' onClick={onSignOut}>
-                            Sign Out
-                        </Button>
-                        <Button variant='warning' onClick={onCancel}>
-                            Cancel
-                        </Button>
+                        <div>
+                            <button className='signInB' variant='danger' onClick={onSignOut}>
+                                Sign Out
+                            </button>
+                        </div>
+                        <div >
+                            <button className='signInB' variant='warning' onClick={onCancel}>
+                                Cancel
+                            </button>
+                        </div>
                     </ButtonGroup>
                 </div>
             </div>
+        </container>
 		</>
 	)
 }
