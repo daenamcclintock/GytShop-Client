@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { Form, Container, Button,  } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-
+import { Form, Container, Button } from 'react-bootstrap'
 
 const CheckoutForm = (props) => {
-    const {handleChange, handleSubmit, heading, order,user} = props
+    const {handleChange, handleSubmit, heading, order} = props
 
     return (
         <Container className="justify-content-center">
@@ -22,7 +20,11 @@ const CheckoutForm = (props) => {
                     name='shippingAddress'
                     onChange={handleChange}
                 />
-                    <Button type='submit' > Submit </Button>
+
+                <Link to={`/orders/${user._id}/payment`}>
+                    <Button type='submit'> Submit </Button>
+                </Link>
+                <Button type='submit'>Submit</Button>
             </Form>
         </Container>
     )

@@ -35,7 +35,8 @@ const CheckoutModal = (props) => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body className='bg-dark text-info'>
-                <CheckoutForm 
+                <CheckoutForm
+                    user={user}
                     order={order}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
