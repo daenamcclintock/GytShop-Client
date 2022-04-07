@@ -2,13 +2,14 @@ import { useState } from 'react';
 import './Stripe.css';
 import StripeContainer from './components/StripeContainer';
 
-function App() {
+const Checkout = (props) => {
 	const [showItem, setShowItem] = useState(false);
+	const { user } = props
 	return (
 		<div className='App'>
 			<h1>GytShopping Cart Checkout</h1>
 			{showItem ? (
-				<StripeContainer />
+				<StripeContainer user={user} />
 			) : (
 				<>
 					<h3>Price Total</h3>
@@ -19,4 +20,4 @@ function App() {
 	);
 }
 
-export default App;
+export default Checkout;

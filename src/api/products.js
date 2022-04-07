@@ -169,6 +169,17 @@ export const updateOrder = (user, updatedOrder) => {
 // GET -> Checkout
 export const getAllCheckoutItems = (user, userId) => {
     return axios({
+        url: `${apiUrl}/orders/${userId}/payment`,
+        method: 'GET',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
+
+// GET -> Confirmation
+export const getConfirmation = (user, userId) => {
+    return axios({
         url: `${apiUrl}/orders/${userId}/confirmation`,
         method: 'GET',
         headers: {

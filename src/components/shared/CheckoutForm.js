@@ -20,6 +20,10 @@ const CheckoutForm = (props) => {
                     name='shippingAddress'
                     onChange={handleChange}
                 />
+
+                <Link to={`/orders/${user._id}/payment`}>
+                    <Button type='submit'> Submit </Button>
+                </Link>
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>

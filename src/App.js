@@ -98,6 +98,10 @@ const App = () => {
 						element={<MyCart msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
+						path='/orders/:userId/payment'
+						element={<Checkout msgAlert={msgAlert} user={user} />}
+					/>
+					<Route
 						path='/orders/:userId/confirmation'
 						element={<Checkout msgAlert={msgAlert} user={user} />}
 					/>
