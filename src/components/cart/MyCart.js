@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { getAllCartItems, removeCartProducts, removeOneCartProduct } from '../../api/products'
+import { getAllCartItems, removeCartProducts, removeOneCartProduct,updateCart } from '../../api/products'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useParams, useNavigate } from 'react-router-dom'
+import CheckoutModal from './CheckoutModal'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -16,6 +17,7 @@ const MyCart = (props) => {
     const {userId} = useParams()
     const {user, msgAlert, triggerRefresh} = props
     const navigate = useNavigate()
+    const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         getAllCartItems(userId, user)
@@ -120,7 +122,9 @@ const MyCart = (props) => {
 
     return (
         <>
-            <Link to={`/products/${user._id}`}><Button>Check out</Button></Link>
+            <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
+                Check Out
+            </Button>
             <h3>My Shopping Cart</h3>
             <h5>Quantity: {products.length}</h5>
             <div style={cardContainerLayout}>
@@ -133,6 +137,14 @@ const MyCart = (props) => {
                 variant="danger"
                 >Empty Cart
             </Button>
+            <CheckoutModal 
+                order={order}
+                show={modalOpen}
+                user={user}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                updateCart={updateCart}
+                handleClose={() => setModalOpen(false)}
+            />
         </>
     )
 }
