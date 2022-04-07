@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './App.css';
-import StripeContainer from './components/StripeContainer';
+import './Stripe.css';
+import StripeContainer from './components/StripeContainer.js';
 
 function App() {
 	const [showItem, setShowItem] = useState(false);
