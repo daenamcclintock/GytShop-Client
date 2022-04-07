@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, Link } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 
 const CheckoutForm = (props) => {
-    const {handleChange, handleSubmit, heading, order} = props
+    const {handleChange, handleSubmit, heading, order, user} = props
 
     return (
         <Container className="justify-content-center">

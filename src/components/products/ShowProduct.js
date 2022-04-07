@@ -113,6 +113,7 @@ const ShowProduct = (props) => {
     // When you click 'Add To Cart' you need to send the productId to an order route to push it to productsOrdered array
     return(
         <>
+        <div className="userNameT">
             <Container>
                 <Card.Body>
                     {
@@ -131,7 +132,7 @@ const ShowProduct = (props) => {
                     }                    
                 </Card.Body>
                     <h3><b>{product.name}</b></h3>
-                    <Card.Img style={{width:'18rem'}}
+                    <Card.Img className='imgSP' style={{width:'18rem'}}
                         src={product.image}
                         alt='product image'
                     />
@@ -142,11 +143,12 @@ const ShowProduct = (props) => {
                         {product.stock === 0 ? 
                         <Button className="m-2" variant="primary" disabled>Add To Cart</Button>
                         :
-                        <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
+                        <button className="signInB" type='submit'>Add To Cart</button>
                         }
-                        <Button onClick={()=> setReviewModalOpen(true)}> Leave a Review</Button>
+                        <button className="reviewB" onClick={()=> setReviewModalOpen(true)}> Leave a Review</button>
                     </Form>
             </Container>
+            
             <h3>Reviews: </h3>
                 {reviews}
                 <GiveReview
@@ -164,6 +166,7 @@ const ShowProduct = (props) => {
                 updateProduct={updateProduct}
                 handleClose={() => setModalOpen(false)}
             />
+        </div>
         </>
     )
 }

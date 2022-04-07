@@ -57,6 +57,7 @@ const ChangePassword = (props) => {
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3 className='topText'>Change Password</h3>
                 <Form onSubmit={onChangePassword}>
+                    <div className='userNameT'>
                     <Form.Group controlId='oldPassword'>
                         <Form.Label>Old password</Form.Label>
                         <Form.Control
@@ -79,9 +80,10 @@ const ChangePassword = (props) => {
                             onChange={e => setNewPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <button className='signInB' type='submit'>
                         Submit
-                    </Button>
+                    </button>
+                    </div>
                 </Form>
             </div>
         </div>
