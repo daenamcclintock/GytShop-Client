@@ -32,6 +32,7 @@ export const getAllClothing = () => {
     return axios(`${apiUrl}/products/clothing`)
 }
 
+
 // GET -> Show function
 export const getOneProduct = (productId) => {
     return axios(`${apiUrl}/products/${productId}`)
@@ -115,17 +116,6 @@ export const updateCart = (user, updatedProduct) => {
     })
 }
 
-// PATCH -> Update Address
-export const updateAddress = (user, order) => {
-    return axios({
-        url: `${apiUrl}/products/${order.id}`,
-        method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        }
-    })
-}
-
 // DELETE -> Remove Cart Product
 export const removeCartProducts = (user) => {
     console.log( user , 'in delete many')
@@ -139,6 +129,18 @@ export const removeCartProducts = (user) => {
     })
 }
 
+// PATCH -> Update Address
+export const updateAddress = (user, order) => {
+    return axios({
+        url: `${apiUrl}/products/${order.id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
+
+
 // DELETE -> Remove One Cart Product
 export const removeOneCartProduct = (user, product) => {
     return axios({
@@ -149,8 +151,7 @@ export const removeOneCartProduct = (user, product) => {
         },
         data: { product: '' }
     })
-}
-
+} 
 // *************** ORDER / CHECKOUT AXIOS API CALLS ***************
 
 // PUT -> update Order
