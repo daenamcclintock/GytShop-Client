@@ -20,7 +20,7 @@ import CollectiblesProducts from './components/categories/CollectiblesProducts'
 import ElectronicsProducts from './components/categories/ElectronicsProducts'
 import MineProducts from './components/products/MineProducts'
 import MyCart from './components/cart/MyCart'
-import Checkout from './components/cart/Checkout'
+import Checkout from './stripeAPI/Checkout'
 
 const App = () => {
 
@@ -98,7 +98,7 @@ const App = () => {
 						element={<MyCart msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
-						path='/checkout'
+						path='/orders/:ownerId/confirmation'
 						element={<Checkout msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
