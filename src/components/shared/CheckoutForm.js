@@ -1,5 +1,8 @@
 import React, { useState, Link } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+
+
 
 const CheckoutForm = (props) => {
     const {handleChange, handleSubmit, heading, order, user} = props
@@ -20,11 +23,9 @@ const CheckoutForm = (props) => {
                     name='shippingAddress'
                     onChange={handleChange}
                 />
-
                 <Link to={`/orders/${user._id}/payment`}>
                     <Button type='submit'> Submit </Button>
                 </Link>
-                <Button type='submit'>Submit</Button>
             </Form>
         </Container>
     )
