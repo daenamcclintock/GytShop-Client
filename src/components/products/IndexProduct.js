@@ -33,11 +33,11 @@ const IndexProducts = (props) => {
     }
 
     let productCards
-    console.log('products in our index', products.owner)
+    // console.log('products in our index', products.owner)
 
     if(products.length > 0) {
         productCards = products.map(product => { 
-            console.log('product owner: ', product.owner)
+            // console.log('product owner: ', product.owner)
             return (<Card key={product._id} style={{ width: '30%' }} className="m-2">
                 <Card.Img variant="top" src="" />
                 <Card.Title className='m-2'>{product.name}</Card.Title>
@@ -59,7 +59,7 @@ const IndexProducts = (props) => {
         })
     }
 
-    console.log('productCards', productCards)
+    // console.log('productCards', productCards)
 
 
     return (

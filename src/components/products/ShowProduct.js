@@ -136,10 +136,14 @@ const ShowProduct = (props) => {
                         alt='product image'
                     />
                     <p>${product.price}</p>
-                    <p>In-stock: {product.stock}</p>
+                    {product.stock === 0 ? <p>Out-of-stock</p> : <p>In-stock: {product.stock}</p>}
                     <p>{product.description}</p>
                     <Form onSubmit={handleSubmit}>
+                        {product.stock === 0 ? 
+                        <Button className="m-2" variant="primary" disabled>Add To Cart</Button>
+                        :
                         <Button className="m-2" variant="primary" type='submit'>Add To Cart</Button>
+                        }
                         <Button onClick={()=> setReviewModalOpen(true)}> Leave a Review</Button>
                     </Form>
             </Container>

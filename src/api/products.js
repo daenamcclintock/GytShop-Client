@@ -136,7 +136,7 @@ export const removeCartProducts = (user) => {
 // DELETE -> Remove One Cart Product
 export const removeOneCartProduct = (user, product) => {
     return axios({
-        url: `${apiUrl}/orders/${user._id}/${product}`,
+        url: `${apiUrl}/orders/${user._id}/${product._id}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
