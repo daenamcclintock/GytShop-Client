@@ -44,12 +44,10 @@ const IndexProducts = (props) => {
                 <Card.Body>
                     <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text>
                         <Link to={`/products/${product._id}`}>
-                            <div>
+                            <div className='imgIP'>
                                 <Card.Img 
                                 src={product.image}
                                 alt='product image'
-                                width='200px'
-                                height='400px'
                                 />
                             </div>
                         </Link>
