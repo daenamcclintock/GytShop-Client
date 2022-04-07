@@ -98,11 +98,7 @@ const App = () => {
 						element={<MyCart msgAlert={msgAlert} user={user} />}
 					/>
 					<Route
-<<<<<<< HEAD
 						path='/orders/:userId/confirmation'
-=======
-						path='/orders/:ownerId/confirmation'
->>>>>>> stripe
 						element={<Checkout msgAlert={msgAlert} user={user} />}
 					/>
 					<Route

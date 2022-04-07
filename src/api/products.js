@@ -136,7 +136,6 @@ export const removeCartProducts = (user) => {
             Authorization: `Token token=${user.token}`
         },
         data: { product: '' }
-<<<<<<< HEAD
     })
 }
 
@@ -150,9 +149,6 @@ export const removeOneCartProduct = (user, product) => {
         },
         data: { product: '' }
     })
-}
-=======
-    }))
 }
 
 // *************** ORDER / CHECKOUT AXIOS API CALLS ***************
@@ -179,4 +175,3 @@ export const getAllCheckoutItems = (user, userId) => {
         }
     })
 }
->>>>>>> stripe
