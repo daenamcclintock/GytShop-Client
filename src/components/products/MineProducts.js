@@ -25,7 +25,7 @@ const MineProducts = (props) => {
         return <p>loading...</p>
     }
     else if (myProducts.length === 0) {
-        return <p>Add a product.</p>
+        return <Link to='/addProduct' >Add a Product </Link>
     }
 
     let productCards
