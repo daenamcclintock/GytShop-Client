@@ -3,7 +3,7 @@ import { Form, Container, Button } from 'react-bootstrap'
 
 const CheckoutForm = (props) => {
     const {handleChange, handleSubmit, heading, order} = props
-
+    console.log('order in checkoutForm: ', order)
     return (
         <Container className="justify-content-center">
              <h3>{heading}</h3>
@@ -18,6 +18,7 @@ const CheckoutForm = (props) => {
                 <Form.Control
                     placeholder="Shipping Address"
                     name='shippingAddress'
+                    // value={order.shippingAddress}
                     onChange={handleChange}
                 />
                 <Button type='submit'>Submit</Button>
