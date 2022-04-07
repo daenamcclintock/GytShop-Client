@@ -1,6 +1,12 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+const linkStyle = {
+    color: 'white',
+    textDecoration: 'none'
+}
 
 const CARD_OPTIONS = {
 	iconStyle: "solid",
@@ -22,11 +28,11 @@ const CARD_OPTIONS = {
 	}
 }
 
-export default function PaymentForm() {
+export default function PaymentForm(props) {
     const [success, setSuccess ] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
-
+    const { user } = props
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -66,7 +72,9 @@ export default function PaymentForm() {
                     <CardElement options={CARD_OPTIONS}/>
                 </div>
             </fieldset>
+            <Link to={`/orders/${user._id}/confirmation`} style={linkStyle}>
             <button id='paybutton'>Pay</button>
+            </Link> 
         </form>
         :
        <div>

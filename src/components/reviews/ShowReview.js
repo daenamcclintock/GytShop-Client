@@ -47,7 +47,7 @@ const ShowReview = (props) => {
     </Card>
     <EditReviewModal
         user={user}
-        product={product}
+        product={product}   
         review={review}
         show={showEditModal}
         handleClose={() => setShowEditModal(false)}
