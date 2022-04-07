@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 
 const CheckoutForm = (props) => {
-    const {handleChange, handleSubmit, heading} = props
+    const {handleChange, handleSubmit, heading, order} = props
 
     return (
         <Container className="justify-content-center">
@@ -14,15 +14,9 @@ const CheckoutForm = (props) => {
                     placeholder="Full Name"
                     onChange={handleChange}
                 />
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control
-                    placeholder="Phone Number"
-                    onChange={handleChange}
-                />
                 <Form.Label>Shipping Address</Form.Label>
                 <Form.Control
-                    placeholder="Category"
-                    value={product.category}
+                    placeholder="Shipping Address"
                     name='shippingAddress'
                     onChange={handleChange}
                 />
