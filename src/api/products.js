@@ -120,6 +120,17 @@ export const updateCart = (user, updatedProduct) => {
     })
 }
 
+// PATCH -> Update Address
+export const updateAddress = (user, order) => {
+    return axios({
+        url: `${apiUrl}/products/${order.id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
+
 // DELETE -> Remove Cart Product
 export const removeCartProducts = (user) => {
     console.log( user , 'in delete many')
@@ -136,7 +147,7 @@ export const removeCartProducts = (user) => {
 // DELETE -> Remove One Cart Product
 export const removeOneCartProduct = (user, product) => {
     return axios({
-        url: `${apiUrl}/orders/${user._id}/${product}`,
+        url: `${apiUrl}/orders/${user._id}/${product._id}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
