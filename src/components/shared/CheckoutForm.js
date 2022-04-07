@@ -22,7 +22,7 @@ const CheckoutForm = (props) => {
                     name='shippingAddress'
                     onChange={handleChange}
                 />
-                <Button type='submit' > Submit </Button>
+                    <Button type='submit' > Submit </Button>
             </Form>
         </Container>
     )

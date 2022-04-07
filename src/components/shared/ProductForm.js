@@ -24,17 +24,6 @@ const ProductForm = (props) => {
                     name='description'
                     onChange={handleChange}
                 />
-                {/* <Dropdown className="d-inline mx-2" autoClose="inside">
-                    <Dropdown.Toggle id="dropdown-autoclose-inside">
-                    Category of Product
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                    <Dropdown.Item value={product.category} >electronics</Dropdown.Item>
-                    <Dropdown.Item value={product.category} >clothing</Dropdown.Item>
-                    <Dropdown.Item value={product.category} >collectibles</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown> */}
                 <Form.Label>Price of Product</Form.Label>
                 <Form.Control
                     type='number'
@@ -51,6 +40,13 @@ const ProductForm = (props) => {
                     name='stock'
                     onChange={handleChange}
                 />
+                <Form.Label>Image of Product</Form.Label>
+                <Form.Control
+                    placeholder="Image of Product"
+                    value={product.image}
+                    name='image'
+                    onChange={handleChange}
+                />
                 <Form.Group controlId="forBasicSelect">
                 <Form.Label>Category of Product</Form.Label>
                 <Form.Control as='select'
@@ -59,6 +55,7 @@ const ProductForm = (props) => {
                     name='category'
                     onChange={handleChange}
                 >
+                    <option></option>
                     <option value="collectibles">Collectibles</option>
                     <option value="electronics">Electronics</option>
                     <option value="clothing">Clothing</option>
