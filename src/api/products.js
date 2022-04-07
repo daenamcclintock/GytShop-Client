@@ -32,11 +32,6 @@ export const getAllClothing = () => {
     return axios(`${apiUrl}/products/clothing`)
 }
 
-// GET -> Checkout
-export const getAllCheckoutItems = (userId) => {
-    return axios(`${apiUrl}/checkout/${userId}`)
-}
-
 // GET -> Show function
 export const getOneProduct = (productId) => {
     return axios(`${apiUrl}/products/${productId}`)
@@ -141,6 +136,7 @@ export const removeCartProducts = (user) => {
             Authorization: `Token token=${user.token}`
         },
         data: { product: '' }
+<<<<<<< HEAD
     })
 }
 
@@ -155,3 +151,32 @@ export const removeOneCartProduct = (user, product) => {
         data: { product: '' }
     })
 }
+=======
+    }))
+}
+
+// *************** ORDER / CHECKOUT AXIOS API CALLS ***************
+
+// PUT -> update Order
+export const updateOrder = (user, updatedOrder) => {
+    return(axios({
+        url: `${apiUrl}/products/${updatedOrder.id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { order: updatedOrder }
+    }))
+}
+
+// GET -> Checkout
+export const getAllCheckoutItems = (user, userId) => {
+    return axios({
+        url: `${apiUrl}/orders/${userId}/confirmation`,
+        method: 'GET',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
+>>>>>>> stripe
