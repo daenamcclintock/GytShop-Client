@@ -75,7 +75,7 @@ const MyCart = (props) => {
     }
     // If there are no products in cart
     else if (products.length === 0) {
-        return <p>Shopping Cart is Empty. Add an item!</p>
+        return <p className='titleText'>Shopping Cart is Empty. Add an item!</p>
     }
 
     // Gets the total cost of all the products in the cart
@@ -106,13 +106,14 @@ const MyCart = (props) => {
                             />
                         </Link>
                         <Card.Text>
-                            <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
-                            <Button 
+                            <Link to={`/products/${product._id}`}><button className='viewI'>View {product.name}</button></Link>
+                            <button 
+                                className='viewI'
                                 onClick ={()=> removeOneProduct(user, product)}
                                 triggerRefresh={() => setUpdated(prev => !prev)}
                                 variant="danger"
                                 >Remove
-                            </Button>
+                            </button>
                         </Card.Text>      
                     </Card.Body>
                 </Card>
@@ -122,21 +123,22 @@ const MyCart = (props) => {
 
     return (
         <>
-            <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
+            <button className='viewI' onClick={() => setModalOpen(true)}>
                 Check Out
-            </Button>
-            <h3>My Shopping Cart</h3>
-            <h5>Quantity: {products.length}</h5>
+            </button>
+            <h3 className='topText'>My Shopping Cart</h3>
+            <h5 className='smallText'>Number of Items In Cart: {products.length}</h5>
             <div style={cardContainerLayout}>
                 {productCards}
             </div>
             <p style={cardContainerLayout}>Total: ${totalPrice}</p>
-            <Button 
+            <button 
+                className='viewI'
                 onClick={() => clearCart()} 
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 variant="danger"
                 >Empty Cart
-            </Button>
+            </button>
             <CheckoutModal 
                 order={order}
                 show={modalOpen}

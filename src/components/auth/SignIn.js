@@ -43,7 +43,7 @@ const SignIn = (props) => {
 	}
 
     return (
-    <div className='backgroundColor'>
+    
      <container className='signinBox'>
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
@@ -89,7 +89,7 @@ const SignIn = (props) => {
             </div>
         </div>
       </container> 
-    </div>   
+    
     )
 }
 

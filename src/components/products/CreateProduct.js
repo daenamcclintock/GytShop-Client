@@ -46,6 +46,7 @@ const CreateProduct = (props) => {
     }
 
     return (
+        <container className='createB'>
         <div>
             <ProductForm
                 product={product}
@@ -54,6 +55,7 @@ const CreateProduct = (props) => {
                 heading="Add A New Product"
             />
         </div>
+        </container>
     )
 }
 
