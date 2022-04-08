@@ -6,6 +6,7 @@ const ProductForm = (props) => {
     const {product, handleChange, handleSubmit, heading} = props
 
     return(
+        <div className='userNameT'>
         <Container className="justify-content-center">
              <h3>{heading}</h3>
 
@@ -61,9 +62,10 @@ const ProductForm = (props) => {
                     <option value="clothing">Clothing</option>
                 </Form.Control>
                 </Form.Group>
-                <Button type='submit'>Submit</Button>
+                <button className='signInB' type='submit'>Submit</button>
             </Form>
         </Container>
+        </div>
     )
 }
 

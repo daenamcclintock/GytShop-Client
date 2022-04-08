@@ -51,7 +51,7 @@ const MyCart = (props) => {
     }
 
 
-    const removeOneProduct = (e) => {
+    const removeOneProduct = (user, userId) => {
         removeOneCartProduct(user, userId)
             .then(() => 
                 msgAlert({
@@ -96,7 +96,7 @@ const MyCart = (props) => {
                     <Card.Img variant="top" src="" />
                     <Card.Title className='m-2'>{product.name}</Card.Title>
                     <Card.Body>
-                        <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text>
+                        {/* <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text> */}
                         <Card.Text>$ {product.price}</Card.Text>   
                         <Link to={`/products/${product._id}`}>
                             <Card.Img
@@ -109,7 +109,7 @@ const MyCart = (props) => {
                         <Card.Text>
                             <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
                             <Button 
-                                onClick ={()=> removeOneCartProduct(user, product)}
+                                onClick ={()=> removeOneProduct(user, product)}
                                 triggerRefresh={() => setUpdated(prev => !prev)}
                                 variant="danger"
                                 >Remove

@@ -1,24 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, Link } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-// import { updateOrder } from '../../api/products'
+
+
+
 
 const CheckoutForm = (props) => {
-    const {handleChange, heading, order} = props
-    const {user} = props
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-
-    //     updateOrder(user, order._id)
-    //         // Then we send success message
-    //         .then( () => {
-    //             console.log('Shipping address changed')
-    //         })
-    //         // if there is an error, we'll send an error message
-    //         .catch(console.log('shipping address couldnt be changed'))
-    //     console.log('submitted!')
-    // }
+    const {handleChange, handleSubmit, heading, order, user} = props
 
     return (
         <Container className="justify-content-center">
@@ -37,7 +25,6 @@ const CheckoutForm = (props) => {
                     // value={order.shippingAddress}
                     onChange={handleChange}
                 />
-
                 <Link to={`/orders/${user._id}/payment`}>
                     <Button type='submit'> Submit </Button>
                 </Link>
