@@ -22,11 +22,12 @@ const MyCart = (props) => {
     useEffect(() => {
         getAllCartItems(userId, user)
             .then(res => {
-                console.log('res: ', res)
-                setProducts(res.data.orders)
+                console.log('RESSSSS: ', res)
+                setProducts(res.data.orders.productsOrdered)
+                setOrder(res.data.orders)
             })
             .catch(console.error)
-    }, [userId])
+    }, [products])
 
     console.log('this is the user id: ', userId)
     console.log('these are the products', products)
@@ -120,33 +121,43 @@ const MyCart = (props) => {
         )
     }
 
-    return (
-        <>
-            <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
-                Check Out
-            </Button>
-            <h3>My Shopping Cart</h3>
-            <h5>Quantity: {products.length}</h5>
-            <div style={cardContainerLayout}>
-                {productCards}
-            </div>
-            <p style={cardContainerLayout}>Total: ${totalPrice}</p>
-            <Button 
-                onClick={() => clearCart()} 
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                variant="danger"
-                >Empty Cart
-            </Button>
-            <CheckoutModal 
-                order={order}
-                show={modalOpen}
-                user={user}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                updateCart={updateCart}
-                handleClose={() => setModalOpen(false)}
-            />
-        </>
-    )
+    if(order)
+    {
+        return (
+            <>
+                <Link to={`/orders/${order._id}/checkout`}>
+                    <Button className="m-2" variant="warning">
+                        Check Out
+                    </Button>
+                </Link>
+                <h3>My Shopping Cart</h3>
+                <h5>Quantity: {products.length}</h5>
+                <div style={cardContainerLayout}>
+                    {productCards}
+                </div>
+                <p style={cardContainerLayout}>Total: ${totalPrice}</p>
+                <Button 
+                    onClick={() => clearCart()} 
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                    variant="danger"
+                    >Empty Cart
+                </Button>
+                <CheckoutModal 
+                    order={order}
+                    show={modalOpen}
+                    user={user}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                    updateCart={updateCart}
+                    handleClose={() => setModalOpen(false)}
+                />
+            </>
+        )
+    }
+    else {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
 }
 
 export default MyCart
