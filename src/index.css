@@ -47,12 +47,16 @@ code {
   
 }
 
+.backgroundColor {
+  background: lightsteelblue;
+}
+
 .signinBox {
+  margin: 0 auto;
   position: absolute;
   top: 115px;
-  left: 15%;
-  right: 50%;
-  width: 900px;
+  left: 33%;
+  width: 35%;
   height: 539px;
   background: #FFFFFFFF;
   border-radius: 20px;
@@ -116,6 +120,13 @@ code {
   border-color: #292639;
 }
 
+#dropdown-basic-button-2 {
+  background: #634DD1FF;
+  border-color: #292639;
+  position: relative;
+  left: 15%;
+}
+
 .imgSP {
   position: relative;
   left: 38%;
@@ -143,5 +154,14 @@ code {
   position: relative;
   right: 0%;
   width: 200px;
-  height: 300px;
+  height: 265px;
+}
+
+
+.titleText {
+  font-family: 'Poppins';
+  text-align: right;
+  position: relative;
+  right: 68%;
+
 }

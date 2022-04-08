@@ -38,18 +38,18 @@ const MineProducts = (props) => {
 
     if(myProducts.length > 0) {
         productCards = myProducts.map(product => (
-            <Card key={product._id} style={{ width: '30%' }} className="m-2">
+            <Card key={product._id} style={{ width: '25%' }} className="m-2">
                 <Card.Img variant="top" src="" />
                 <Card.Title className='m-2'>{product.name}</Card.Title>
                 <Card.Body>
                     <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text>
                         <Link to={`/products/${product._id}`}>
-                            <Card.Img
-                            src={product.image}
-                            alt='product image'
-                            width='200px'
-                            height='400px'
-                            />
+                            <div className='imgIP'>
+                                <Card.Img 
+                                src={product.image}
+                                alt='product image'
+                                />
+                            </div>
                         </Link>
                     <Card.Text> 
 
@@ -63,9 +63,9 @@ const MineProducts = (props) => {
 
     return (
         <>
-            <h3 className='userName'>Browse My Products</h3>
+            <h3 className='titleText'>Browse My Products</h3>
             <Dropdown>
-                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                <Dropdown.Toggle id="dropdown-basic-button-2">
                     Categories
                 </Dropdown.Toggle>
 

@@ -149,7 +149,7 @@ const ShowProduct = (props) => {
                     </Form>
             </Container>
             
-            <h3>Reviews: </h3>
+            <h3 className="titleText">Reviews: </h3>
                 {reviews}
                 <GiveReview
                     user={user}
