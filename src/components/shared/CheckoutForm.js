@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+
 
 
 
@@ -10,7 +11,7 @@ const CheckoutForm = (props) => {
     return (
         <Container className="justify-content-center">
              <h3>{heading}</h3>
-
+{/* 
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
@@ -21,12 +22,13 @@ const CheckoutForm = (props) => {
                 <Form.Control
                     placeholder="Shipping Address"
                     name='shippingAddress'
+                    // value={order.shippingAddress}
                     onChange={handleChange}
                 />
                 <Link to={`/orders/${user._id}/payment`}>
                     <Button type='submit'> Submit </Button>
                 </Link>
-            </Form>
+            </Form> */}
         </Container>
     )
 }

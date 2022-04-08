@@ -130,13 +130,15 @@ export const removeCartProducts = (user) => {
 }
 
 // PATCH -> Update Address
-export const updateAddress = (user, order) => {
+export const updateAddress = (user, updatedOrder, orderId) => {
+    console.log('ORDER ID: ', orderId)
     return axios({
-        url: `${apiUrl}/products/${order.id}`,
+        url: `${apiUrl}/products/${orderId}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
-        }
+        },
+        data: {order: updatedOrder}
     })
 }
 
@@ -155,27 +157,27 @@ export const removeOneCartProduct = (user, product) => {
 // *************** ORDER / CHECKOUT AXIOS API CALLS ***************
 
 // PUT -> update Order
-export const updateOrder = (user, updatedOrder) => {
-    return(axios({
-        url: `${apiUrl}/products/${updatedOrder.id}`,
-        method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-        data: { order: updatedOrder }
-    }))
-}
+// export const updateOrder = (user, updatedOrder) => {
+//     return(axios({
+//         url: `${apiUrl}/products/${updatedOrder.id}`,
+//         method: 'PUT',
+//         headers: {
+//             Authorization: `Token token=${user.token}`
+//         },
+//         data: { order: updatedOrder }
+//     }))
+// }
 
 // GET -> Checkout
-export const getAllCheckoutItems = (user, userId) => {
-    return axios({
-        url: `${apiUrl}/orders/${userId}/payment`,
-        method: 'GET',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        }
-    })
-}
+// export const getAllCheckoutItems = (user, userId) => {
+//     return axios({
+//         url: `${apiUrl}/orders/${userId}/payment`,
+//         method: 'GET',
+//         headers: {
+//             Authorization: `Token token=${user.token}`
+//         }
+//     })
+// }
 
 // GET -> Confirmation
 export const getConfirmation = (user, userId) => {

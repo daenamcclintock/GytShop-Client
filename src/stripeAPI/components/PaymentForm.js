@@ -72,9 +72,9 @@ export default function PaymentForm(props) {
                     <CardElement options={CARD_OPTIONS}/>
                 </div>
             </fieldset>
-            <Link to={`/orders/${user._id}/confirmation`} style={linkStyle}>
+            {/* <Link to={`/orders/${user._id}/confirmation`} style={linkStyle}> */}
             <button id='paybutton'>Pay</button>
-            </Link> 
+            {/* </Link>  */}
         </form>
         :
        <div>

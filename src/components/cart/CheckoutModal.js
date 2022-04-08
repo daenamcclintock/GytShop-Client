@@ -19,16 +19,10 @@ const CheckoutModal = (props) => {
         })
     }
 
-
-
     const handleSubmit = (e) => {
         
         e.preventDefault()
         console.log('here is our user in edit', user)
-        // updateProduct(user,order)
-        //     .then(() => handleClose())
-        //     .then(()=> triggerRefresh())
-        //     .catch(console.error)
     }
     
     return (
