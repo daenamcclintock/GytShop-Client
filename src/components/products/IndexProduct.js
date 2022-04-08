@@ -64,8 +64,8 @@ const IndexProducts = (props) => {
 
     return (
         <>
-            <h3 className='userName'>Browse Some Products</h3>
-            <DropdownButton id="dropdown-basic-button" title="Categories" >
+            <h3 className='titleText'>Browse Some Products</h3>
+            <DropdownButton id="dropdown-basic-button-2" title="Categories" >
 				<Dropdown.Item><Link to='/products/clothing' style={categoryLinks}>Clothing</Link></Dropdown.Item>
 				<Dropdown.Item><Link to='/products/electronics' style={categoryLinks}>Electronics</Link></Dropdown.Item>
 				<Dropdown.Item><Link to='/products/collectibles' style={categoryLinks}>Collectibles</Link></Dropdown.Item>

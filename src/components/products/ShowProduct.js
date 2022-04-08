@@ -149,7 +149,7 @@ const ShowProduct = (props) => {
                         <button className="reviewB" onClick={()=> setReviewModalOpen(true)}> Leave a Review</button>
             </Container>
             
-            <h3>Reviews: </h3>
+            <h3 className="titleText">Reviews: </h3>
                 {reviews}
                 <GiveReview
                     user={user}

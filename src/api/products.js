@@ -52,7 +52,7 @@ export const createProduct = (user, newProduct) => {
 }
 
 // PATCH -> Update function
-export const updateProduct = (user, updatedProduct) => {
+export const updateProduct = (user, updatedProduct ) => {
     console.log('user in editing product' ,user)
     return axios({
         url: `${apiUrl}/products/${updatedProduct._id}/edit`,

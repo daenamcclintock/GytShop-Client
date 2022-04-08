@@ -53,6 +53,7 @@ const ChangePassword = (props) => {
 
 
     return (
+        <container className='signinBox'>
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3 className='topText'>Change Password</h3>
@@ -87,6 +88,7 @@ const ChangePassword = (props) => {
                 </Form>
             </div>
         </div>
+      </container>
     )
 }
 
