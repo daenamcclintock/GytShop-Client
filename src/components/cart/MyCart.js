@@ -95,7 +95,7 @@ const MyCart = (props) => {
                     <Card.Img variant="top" src="" />
                     <Card.Title className='m-2'>{product.name}</Card.Title>
                     <Card.Body>
-                        <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text>
+                        {/* <Card.Text>Seller: {!product.owner ? null : product.owner.username}</Card.Text> */}
                         <Card.Text>$ {product.price}</Card.Text>   
                         <Link to={`/products/${product._id}`}>
                             <Card.Img

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Dropdown, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getMyProducts } from '../../api/products'
 
 const cardContainerLayout = {
@@ -12,7 +12,9 @@ const cardContainerLayout = {
 const MineProducts = (props) => {
     const [myProducts, setMyProducts] = useState(null)
     const {user} = props
+    const [product, setProduct] = useState(null)
     
+
     useEffect(() => {
         getMyProducts(user)
             .then(res => {
@@ -25,9 +27,13 @@ const MineProducts = (props) => {
         return <p>loading...</p>
     }
     else if (myProducts.length === 0) {
-        return <Link to='/addProduct' >Add a Product </Link>
+        return <Link to='/addProduct' > <h4 className="text-center"> Looks like you have nothing for sale, Lets go add one! </h4> </Link>
     }
 
+
+
+
+    
     let productCards
 
     if(myProducts.length > 0) {
