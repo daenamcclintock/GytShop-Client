@@ -76,7 +76,7 @@ const MyCart = (props) => {
     }
     // If there are no products in cart
     else if (products.length === 0) {
-        return <p>Shopping Cart is Empty. Add an item!</p>
+        return <p className='titleText'>Shopping Cart is Empty. Add an item!</p>
     }
 
     // Gets the total cost of all the products in the cart
@@ -107,19 +107,50 @@ const MyCart = (props) => {
                             />
                         </Link>
                         <Card.Text>
-                            <Link to={`/products/${product._id}`}><Button>View {product.name}</Button></Link>
-                            <Button 
+                            <Link to={`/products/${product._id}`}><button className='viewI'>View {product.name}</button></Link>
+                            <button 
+                                className='viewI'
                                 onClick ={()=> removeOneProduct(user, product)}
                                 triggerRefresh={() => setUpdated(prev => !prev)}
                                 variant="danger"
                                 >Remove
-                            </Button>
+                            </button>
                         </Card.Text>      
                     </Card.Body>
                 </Card>
             )
         )
     }
+
+
+    return (
+        <>
+            <button className='viewI' onClick={() => setModalOpen(true)}>
+                Check Out
+            </button>
+            <h3 className='topText'>My Shopping Cart</h3>
+            <h5 className='smallText'>Number of Items In Cart: {products.length}</h5>
+            <div style={cardContainerLayout}>
+                {productCards}
+            </div>
+            <p style={cardContainerLayout}>Total: ${totalPrice}</p>
+            <button 
+                className='viewI'
+                onClick={() => clearCart()} 
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                variant="danger"
+                >Empty Cart
+            </button>
+            <CheckoutModal 
+                order={order}
+                show={modalOpen}
+                user={user}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                updateCart={updateCart}
+                handleClose={() => setModalOpen(false)}
+            />
+        </>
+    )
 
     if(order)
     {
@@ -158,6 +189,7 @@ const MyCart = (props) => {
             <h1>Loading...</h1>
         )
     }
+
 }
 
 export default MyCart
