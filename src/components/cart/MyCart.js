@@ -163,7 +163,7 @@ const MyCart = (props) => {
         return (
             <>
                 <Link to={`/orders/${order._id}/checkout`}>
-                    <Button className="m-2" variant="warning" onClick={() => updateTotalPrice()}>
+                    <Button className="m-2" variant="warning" onClick={() => updateTotalPrice(user, order.id, totalPrice)}>
                         Check Out
                     </Button>
                 </Link>

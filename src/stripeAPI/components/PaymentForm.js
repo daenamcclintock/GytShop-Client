@@ -33,7 +33,7 @@ export default function PaymentForm(props) {
     const [success, setSuccess ] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
-    const { user } = props
+    const { user, totalPrice } = props
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -49,8 +49,8 @@ export default function PaymentForm(props) {
     if(!error) {
         try {
             const {id} = paymentMethod
-            const response = await axios.post("http://localhost:3000/payment", { 
-                amount: 1000,
+            const response = await axios.post("http://localhost:8000/payment", { 
+                amount: totalPrice * 100,
                 id
             })
 
@@ -82,7 +82,7 @@ export default function PaymentForm(props) {
         </form>
         :
        <div>
-           {/* <h2>Payment Success!</h2> */}
+           <h2>Payment Successful!</h2>
        </div> 
         }
             
