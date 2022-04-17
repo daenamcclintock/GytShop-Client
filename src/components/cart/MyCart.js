@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getAllCartItems, removeCartProducts, removeOneCartProduct,updateCart } from '../../api/products'
+import { getAllCartItems, removeCartProducts, removeOneCartProduct,updateCart, updateOrderTotalPrice } from '../../api/products'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import CheckoutModal from './CheckoutModal'
@@ -25,12 +25,14 @@ const MyCart = (props) => {
                 console.log('RESSSSS: ', res)
                 setProducts(res.data.orders.productsOrdered)
                 setOrder(res.data.orders)
+                
             })
             .catch(console.error)
     }, [products])
 
     console.log('this is the user id: ', userId)
     console.log('these are the products', products)
+    console.log('ORDERRRRR: ', order)
     console.log('this is the user\'s token', user.token)
 
     const clearCart = () => {
@@ -41,15 +43,14 @@ const MyCart = (props) => {
                     message: 'All products removed from cart',
                     variant: 'success'
             }))
-        .then(() => navigate(`/`))
-            .catch(() => 
-                msgAlert({
-                    heading: 'Something Went Wrong!',
-                    message: 'please try again',
-                    variant: 'danger'
-            }))
+            .then(() => navigate(`/`))
+                .catch(() => 
+                    msgAlert({
+                        heading: 'Something Went Wrong!',
+                        message: 'please try again',
+                        variant: 'danger'
+                }))
     }
-
 
     const removeOneProduct = (user, userId) => {
         removeOneCartProduct(user, userId)
@@ -59,16 +60,20 @@ const MyCart = (props) => {
                     message: "The Product has been Removed" ,
                     variant: 'success'
             }))
-        .then(() => navigate(`/orders/${userId}`))
-            .catch(() => 
-                msgAlert({
-                    heading: 'Something Went Wrong!',
-                    message: 'please try again',
-                    variant: 'danger'
-            }))
+            .then(() => navigate(`/orders/${userId}`))
+                .catch(() => 
+                    msgAlert({
+                        heading: 'Something Went Wrong!',
+                        message: 'please try again',
+                        variant: 'danger'
+                }))
     }
     
-    
+    const updateTotalPrice = () => {
+        updateOrderTotalPrice(user, order.id, totalPrice)
+            .then(console.log('TOTAL PRICE UPDATED'))
+            .catch(console.error)
+    }
 
     // If products is null
     if (!products) {
@@ -86,6 +91,7 @@ const MyCart = (props) => {
         totalPrice += products[i].price
     }
     console.log('total price: ', totalPrice)
+    // console.log('ORDER VIRTUAL total price: ', order.totalPrice)
 
     let productCards
 
@@ -123,41 +129,41 @@ const MyCart = (props) => {
     }
 
 
-    return (
-        <>
-            <button className='viewI' onClick={() => setModalOpen(true)}>
-                Check Out
-            </button>
-            <h3 className='topText'>My Shopping Cart</h3>
-            <h5 className='smallText'>Number of Items In Cart: {products.length}</h5>
-            <div style={cardContainerLayout}>
-                {productCards}
-            </div>
-            <p style={cardContainerLayout}>Total: ${totalPrice}</p>
-            <button 
-                className='viewI'
-                onClick={() => clearCart()} 
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                variant="danger"
-                >Empty Cart
-            </button>
-            <CheckoutModal 
-                order={order}
-                show={modalOpen}
-                user={user}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                updateCart={updateCart}
-                handleClose={() => setModalOpen(false)}
-            />
-        </>
-    )
+    // return (
+    //     <>
+    //         <button className='viewI' onClick={() => setModalOpen(true)}>
+    //             Check Out
+    //         </button>
+    //         <h3 className='topText'>My Shopping Cart</h3>
+    //         <h5 className='smallText'>Number of Items In Cart: {products.length}</h5>
+    //         <div style={cardContainerLayout}>
+    //             {productCards}
+    //         </div>
+    //         <p style={cardContainerLayout}>Total: ${totalPrice}</p>
+    //         <button 
+    //             className='viewI'
+    //             onClick={() => clearCart()} 
+    //             triggerRefresh={() => setUpdated(prev => !prev)}
+    //             variant="danger"
+    //             >Empty Cart
+    //         </button>
+    //         <CheckoutModal 
+    //             order={order}
+    //             show={modalOpen}
+    //             user={user}
+    //             triggerRefresh={() => setUpdated(prev => !prev)}
+    //             updateCart={updateCart}
+    //             handleClose={() => setModalOpen(false)}
+    //         />
+    //     </>
+    // )
 
     if(order)
     {
         return (
             <>
                 <Link to={`/orders/${order._id}/checkout`}>
-                    <Button className="m-2" variant="warning">
+                    <Button className="m-2" variant="warning" onClick={() => updateTotalPrice()}>
                         Check Out
                     </Button>
                 </Link>
