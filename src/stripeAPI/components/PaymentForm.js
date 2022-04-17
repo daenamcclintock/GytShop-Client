@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 // Function to get rid of the underline under the link
 const linkStyle = {
@@ -46,7 +47,11 @@ export default function PaymentForm(props) {
             card: elements.getElement(CardElement)
         })
 
-    // If no error, 
+    // const confirmationAlert = () => {
+    //     alert(`order received`)
+    // }    
+        
+    // If no error,
     if(!error) {
         try {
             const { id } = paymentMethod
@@ -78,12 +83,12 @@ export default function PaymentForm(props) {
                 </div>
             </fieldset>
             {/* <Link to={`/orders/${user._id}/confirmation`} style={linkStyle}> */}
-            <button id='paybutton'>Pay</button>
             {/* </Link>  */}
+            <button id='paybutton'>Pay</button>
         </form>
         :
        <div>
-           <h2>Payment Success!</h2>
+           {/* <h2>Payment Success!</h2> */}
        </div> 
         }
             

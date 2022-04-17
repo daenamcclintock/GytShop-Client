@@ -156,6 +156,18 @@ export const removeOneCartProduct = (user, product) => {
 } 
 // *************** ORDER / CHECKOUT AXIOS API CALLS ***************
 
+// PATCH -> update total price for order
+export const updateOrderTotalPrice = (user, orderID, updatedOrder) => {
+    return axios({
+        url: `${apiUrl}/orders/${orderID}/totalPrice`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: {order: updatedOrder}
+    })
+}
+
 // PUT -> update Order
 // export const updateOrder = (user, updatedOrder) => {
 //     return(axios({
