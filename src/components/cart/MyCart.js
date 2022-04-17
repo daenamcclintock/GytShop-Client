@@ -123,34 +123,34 @@ const MyCart = (props) => {
     }
 
 
-    return (
-        <>
-            <button className='viewI' onClick={() => setModalOpen(true)}>
-                Check Out
-            </button>
-            <h3 className='topText'>My Shopping Cart</h3>
-            <h5 className='smallText'>Number of Items In Cart: {products.length}</h5>
-            <div style={cardContainerLayout}>
-                {productCards}
-            </div>
-            <p style={cardContainerLayout}>Total: ${totalPrice}</p>
-            <button 
-                className='viewI'
-                onClick={() => clearCart()} 
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                variant="danger"
-                >Empty Cart
-            </button>
-            <CheckoutModal 
-                order={order}
-                show={modalOpen}
-                user={user}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                updateCart={updateCart}
-                handleClose={() => setModalOpen(false)}
-            />
-        </>
-    )
+    // return (
+    //     <>
+    //         <button className='viewI' onClick={() => setModalOpen(true)}>
+    //             Check Out
+    //         </button>
+    //         <h3 className='topText'>My Shopping Cart</h3>
+    //         <h5 className='smallText'>Number of Items In Cart: {products.length}</h5>
+    //         <div style={cardContainerLayout}>
+    //             {productCards}
+    //         </div>
+    //         <p style={cardContainerLayout}>Total: ${totalPrice}</p>
+    //         <button 
+    //             className='viewI'
+    //             onClick={() => clearCart()} 
+    //             triggerRefresh={() => setUpdated(prev => !prev)}
+    //             variant="danger"
+    //             >Empty Cart
+    //         </button>
+    //         <CheckoutModal 
+    //             order={order}
+    //             show={modalOpen}
+    //             user={user}
+    //             triggerRefresh={() => setUpdated(prev => !prev)}
+    //             updateCart={updateCart}
+    //             handleClose={() => setModalOpen(false)}
+    //         />
+    //     </>
+    // )
 
     if(order)
     {

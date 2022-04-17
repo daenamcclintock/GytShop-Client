@@ -3,11 +3,13 @@ import axios from "axios"
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+// Function to get rid of the underline under the link
 const linkStyle = {
     color: 'white',
     textDecoration: 'none'
 }
 
+// Creates the carts
 const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
@@ -28,12 +30,15 @@ const CARD_OPTIONS = {
 	}
 }
 
-export default function PaymentForm(props) {
+// Function to set up the payment form
+// Destructures user from props
+export default function PaymentForm(props) { 
     const [success, setSuccess ] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
     const { user } = props
 
+    // Function to handle the submit of the payment and render the payment method type
     const handleSubmit = async (e) => {
         e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
@@ -41,10 +46,10 @@ export default function PaymentForm(props) {
             card: elements.getElement(CardElement)
         })
 
-
+    // If no error, 
     if(!error) {
         try {
-            const {id} = paymentMethod
+            const { id } = paymentMethod
             const response = await axios.post("http://localhost:3000/payment", { 
                 amount: 1000,
                 id
