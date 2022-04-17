@@ -158,6 +158,7 @@ export const removeOneCartProduct = (user, product) => {
 
 // PATCH -> update total price for order
 export const updateOrderTotalPrice = (user, orderID, updatedOrder) => {
+    // console.log('This is the ')
     return axios({
         url: `${apiUrl}/orders/${orderID}/totalPrice`,
         method: 'PATCH',

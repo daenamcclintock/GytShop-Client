@@ -4,12 +4,12 @@ import StripeContainer from './components/StripeContainer';
 
 const Checkout = (props) => {
 	const [showItem, setShowItem] = useState(false);
-	const { user, firstName, lastName, shippingAddress } = props
+	const { user, firstName, lastName, shippingAddress, totalPrice } = props
 
 	return (
 		<div className='App'>
 			{showItem ? (
-				<StripeContainer user={user} firstName={firstName} lastName={lastName} shippingAddress={shippingAddress}/>
+				<StripeContainer user={user} firstName={firstName} lastName={lastName} shippingAddress={shippingAddress} totalPrice={totalPrice}/>
 			) : (
 				<>
 					<h3>Total Price of All Cart Items</h3>

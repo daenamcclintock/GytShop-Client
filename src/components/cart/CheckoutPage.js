@@ -133,7 +133,7 @@ const CheckoutPage = (props) => {
                 </Button>
             </Form>
             </div>
-            <Checkout firstName={order.firstName} lastName={order.lastName} shippingAddress={order.shippingAddress}/>
+            <Checkout firstName={order.firstName} lastName={order.lastName} shippingAddress={order.shippingAddress} totalPrice={totalPrice}/>
         </>
     )
 }
