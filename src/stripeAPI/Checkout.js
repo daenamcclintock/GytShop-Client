@@ -12,6 +12,7 @@ const Checkout = (props) => {
 				<StripeContainer user={user} firstName={firstName} lastName={lastName} shippingAddress={shippingAddress} totalPrice={totalPrice}/>
 			) : (
 				<>
+					<h3>Total Price of All Cart Items</h3>
 					<button id='paybutton' onClick={() => setShowItem(true)}>Pay Now</button>
 				</>
 			)}

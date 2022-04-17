@@ -4,11 +4,13 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
+// Function to get rid of the underline under the link
 const linkStyle = {
     color: 'white',
     textDecoration: 'none'
 }
 
+// Creates the carts
 const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
@@ -29,12 +31,15 @@ const CARD_OPTIONS = {
 	}
 }
 
-export default function PaymentForm(props) {
+// Function to set up the payment form
+// Destructures user from props
+export default function PaymentForm(props) { 
     const [success, setSuccess ] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
     const { user, totalPrice } = props
 
+    // Function to handle the submit of the payment and render the payment method type
     const handleSubmit = async (e) => {
         e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
@@ -45,7 +50,8 @@ export default function PaymentForm(props) {
     // const confirmationAlert = () => {
     //     alert(`order received`)
     // }    
-
+        
+    // If no error,
     if(!error) {
         try {
             const {id} = paymentMethod
