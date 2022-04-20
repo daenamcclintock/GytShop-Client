@@ -20,7 +20,6 @@ import CollectiblesProducts from './components/categories/CollectiblesProducts'
 import ElectronicsProducts from './components/categories/ElectronicsProducts'
 import MineProducts from './components/products/MineProducts'
 import MyCart from './components/cart/MyCart'
-import Checkout from './stripeAPI/Checkout'
 import Confirmation from './components/payment/Confirmation'
 import CheckoutPage from './components/cart/CheckoutPage'
 
@@ -99,12 +98,8 @@ const App = () => {
 						path='/orders/:userId'
 						element={<MyCart msgAlert={msgAlert} user={user} />}
 					/>
-					{/* <Route
-						path='/orders/:userId/payment'
-						element={<Checkout msgAlert={msgAlert} user={user} />}
-					/> */}
 					<Route
-						path='/orders/:userId/confirmation'
+						path='/orders/:orderId/confirmation'
 						element={<Confirmation msgAlert={msgAlert} user={user} />}
 					/>
 					<Route

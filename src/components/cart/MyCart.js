@@ -28,7 +28,7 @@ const MyCart = (props) => {
                 
             })
             .catch(console.error)
-    }, [products])
+    }, [])
 
     console.log('this is the user id: ', userId)
     console.log('these are the products', products)
@@ -117,7 +117,7 @@ const MyCart = (props) => {
                             <button 
                                 className='viewI'
                                 onClick ={()=> removeOneProduct(user, product)}
-                                triggerRefresh={() => setUpdated(prev => !prev)}
+                                // triggerRefresh={() => setUpdated(prev => !prev)}
                                 variant="danger"
                                 >Remove
                             </button>

@@ -193,9 +193,9 @@ export const updateOrderTotalPrice = (user, orderID, updatedOrder) => {
 // }
 
 // GET -> Confirmation
-export const getConfirmation = (user, userId) => {
+export const getConfirmation = (user, orderId) => {
     return axios({
-        url: `${apiUrl}/orders/${userId}/confirmation`,
+        url: `${apiUrl}/orders/${orderId}/confirmation`,
         method: 'GET',
         headers: {
             Authorization: `Token token=${user.token}`
