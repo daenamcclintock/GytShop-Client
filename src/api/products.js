@@ -40,7 +40,7 @@ export const getOneProduct = (productId) => {
 
 // POST -> Create function
 export const createProduct = (user, newProduct) => {
-    console.log('user in creating a product', user)
+    console.log('user is creating a product', user)
     return axios({
         url: `${apiUrl}/products`,
         method: 'POST',
