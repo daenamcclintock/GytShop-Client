@@ -6,6 +6,8 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Metamask from '../metamask/Metamask'
+import MetamaskFox from '../metamask/MetamaskFox'
 
 const SignIn = (props) => {
 
@@ -85,7 +87,11 @@ const SignIn = (props) => {
                         </button>
                     </div>
                     
-                </Form>
+                </Form >
+            </div>
+            <div className='metamask-button'>
+                <Metamask />
+                <MetamaskFox />
             </div>
         </div>
       </container> 

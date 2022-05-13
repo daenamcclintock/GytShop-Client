@@ -4,6 +4,8 @@ import { Card, Button, ListGroup, Form } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import { updateAddress } from '../../api/products'
 import Checkout from '../../stripeAPI/Checkout'
+import Metamask from '../metamask/Metamask'
+import MetamaskFox from '../metamask/MetamaskFox'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -134,6 +136,10 @@ const CheckoutPage = (props) => {
             </Form>
             </div>
             <Checkout firstName={order.firstName} lastName={order.lastName} shippingAddress={order.shippingAddress} totalPrice={totalPrice} orderId={orderId}/>
+            <div className='metamask-button'>
+                <Metamask />
+                <MetamaskFox />
+            </div>
         </>
     )
 }

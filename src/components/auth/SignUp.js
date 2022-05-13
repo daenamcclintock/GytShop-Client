@@ -7,6 +7,8 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Metamask from '../metamask/Metamask'
+import MetamaskFox from '../metamask/MetamaskFox'
 
 const SignUp = (props) => {
  
@@ -49,63 +51,67 @@ const SignUp = (props) => {
 
     return (
         <container className='signinBox'>
-        <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3 className='topText'>Sign Up</h3>
-                <Form onSubmit={onSignUp}>
-                    <Form.Group controlId='email'>
+            <div className='row'>
+                <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+                    <h3 className='topText'>Sign Up</h3>
+                    <Form onSubmit={onSignUp}>
+                        <Form.Group controlId='email'>
+                            <div className='userNameT'>
+                                <Form.Label>Username</Form.Label>
+                            </div>
+                            <div className='userName'>
+                                <Form.Control
+                                    required
+                                    type='text'
+                                    name='username'
+                                    value={username}
+                                    placeholder='Enter username'
+                                    onChange={e => setUsername(e.target.value)}
+                                />
+                            </div>
+                        </Form.Group>
+                        <Form.Group controlId='password'>
                         <div className='userNameT'>
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label>Password</Form.Label>
                         </div>
                         <div className='userName'>
                             <Form.Control
                                 required
-                                type='text'
-                                name='username'
-                                value={username}
-                                placeholder='Enter username'
-                                onChange={e => setUsername(e.target.value)}
+                                name='password'
+                                value={password}
+                                type='password'
+                                placeholder='Password'
+                                onChange={e => setPassword(e.target.value)}
                             />
                         </div>
-                    </Form.Group>
-                    <Form.Group controlId='password'>
-                    <div className='userNameT'>
-                        <Form.Label>Password</Form.Label>
-                    </div>
-                    <div className='userName'>
-                        <Form.Control
-                            required
-                            name='password'
-                            value={password}
-                            type='password'
-                            placeholder='Password'
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                    </div>
-                    </Form.Group>
-                    <Form.Group controlId='passwordConfirmation'>
-                    <div className='userNameT'>
-                        <Form.Label>Password Confirmation</Form.Label>
-                    </div>
-                    <div className='userName'>
-                        <Form.Control
-                            required
-                            name='passwordConfirmation'
-                            value={passwordConfirmation}
-                            type='password'
-                            placeholder='Confirm Password'
-                            onChange={e => setPasswordConfirmation(e.target.value)}
-                        />
-                    </div>
-                    </Form.Group>
-                    
-                        <button className='signInB' type='submit'>
-                            Submit
-                    </button>
-                    
-                </Form>
+                        </Form.Group>
+                        <Form.Group controlId='passwordConfirmation'>
+                        <div className='userNameT'>
+                            <Form.Label>Password Confirmation</Form.Label>
+                        </div>
+                        <div className='userName'>
+                            <Form.Control
+                                required
+                                name='passwordConfirmation'
+                                value={passwordConfirmation}
+                                type='password'
+                                placeholder='Confirm Password'
+                                onChange={e => setPasswordConfirmation(e.target.value)}
+                            />
+                        </div>
+                        </Form.Group>
+                        
+                            <button className='signInB' type='submit'>
+                                Submit
+                        </button>
+                        
+                    </Form>
+                </div>
+            </div >
+            <div className='metamask-button'>
+                <Metamask />
+                <MetamaskFox />
             </div>
-        </div>
         </container>
     )
 

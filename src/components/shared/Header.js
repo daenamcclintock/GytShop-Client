@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import {Navbar, DropdownButton, Dropdown} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import MetamaskFox from '../metamask/MetamaskFox'
+import NavFox from '../metamask/NavFox'
 const linkStyle = {
     color: 'white',
     textDecoration: 'none'
@@ -38,6 +40,9 @@ const authenticatedOptions = ({user}) => (
 				Sign Out
 			</Link>
 		</Nav.Item>
+		<Nav.Item className='nav-fox'>
+			<NavFox />
+		</Nav.Item>
 	</>
 )
 
@@ -49,6 +54,9 @@ const unauthenticatedOptions = (
         <Nav.Item className='m-2'>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
+		<Nav.Item>
+			<NavFox />
+		</Nav.Item>
 	</>
 )
 
