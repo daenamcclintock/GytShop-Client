@@ -58,11 +58,11 @@ const Metamask = () => {
         {/*
         * If there is no current metmask Account render this button
         */}
-        {/* {!currentAccount && ( */}
+        {!currentAccount && (
           <button className="metamask" onClick={connectWallet}>
             Connect Metmask Wallet
           </button>
-        
+        )}
     </div>
   );
 }
